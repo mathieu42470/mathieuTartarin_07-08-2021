@@ -19,9 +19,6 @@
 .mt-6{
     margin-top: 5%;
 }
-.justify-between{
-               justify-content: space-between;
-}
 .items-center{
                align-items: center;
 }
@@ -53,4 +50,35 @@ h1{
 }
 .ml-1{
     margin-left: 2%;
+}
+.my-1{
+    margin-bottom: 2%;
+}
+.pt-2{
+    margin-top: 10px;
+}
+.fs-1{
+    font-size: 20px;
+}
+.h-1{
+    height: 20rem;
+    width: 100%;
+    object-fit: cover;
+}
+.center{
+    justify-content: center;
+}
+.bg-2{
+    background-color: grey;
+}
+h2{
+    font-size: 20px;
+}
+.h-2{
+    width: 100%;
+    height: 50px;
+    object-fit: cover;
+}
+.wrap{
+    flex-wrap: wrap;
 }
