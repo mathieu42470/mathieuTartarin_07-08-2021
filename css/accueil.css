@@ -82,3 +82,9 @@ h2{
 .wrap{
     flex-wrap: wrap;
 }
+.my-2{
+    margin: 10%;
+}
+.fs-2{
+    font-size: 35px;
+}
