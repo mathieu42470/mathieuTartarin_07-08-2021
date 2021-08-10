@@ -88,3 +88,28 @@ h2{
 .fs-2{
     font-size: 35px;
 }
+
+@media (min-width: 100px) and (max-width: 600px){
+    .flex{
+         display: flex;
+     }
+     .direction{
+         flex-direction: column;
+     }
+     .column{
+         flex-direction: column;
+     }
+     
+}
+@media (min-width: 600px) and (max-width: 1024px){
+     .flex{
+         display: flex;
+     }
+     .direction{
+         flex-direction: column;
+     }
+     .column{
+         flex-direction: column;
+     }
+     
+}
