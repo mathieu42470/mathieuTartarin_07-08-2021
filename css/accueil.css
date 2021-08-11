@@ -23,7 +23,7 @@
                align-items: center;
 }
 .list-none{
-               list-style-type: none;
+               color: black;
 }
 .row{
     flex-direction: row;
@@ -36,6 +36,9 @@
 }
 h1{
     font-size: 25px;
+}
+p{
+    font-size: 15px;
 }
 .h-10{
     height: 15rem;
