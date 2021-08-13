@@ -8,7 +8,7 @@ async function main(){
 }
 
             
-
+// recuperation des articles de nounours //
 function getArticles() {
   return fetch("http://localhost:3000/api/teddies")
                .then(function(httpBodyResponse) {
@@ -23,11 +23,11 @@ function getArticles() {
               }
 
 
-
+// mise en page des articles //
  function displayArticle(article){
   document.getElementById("produitlist").innerHTML +=`
-   <div class="card list-none ms" style="width: 100%;">
-    <img src="http://localhost:3000/images/teddy_1.jpg">
+   <div class="card list-none ms border-radius my-1" style="width: 100%;">
+    <img class="border-radius h-10 " src="${article.imageUrl}">
    <div class="card-body">
      <h1 class="list-none"><strong>${article.name}</strong></h1>
      <p class="card-text list-none">${article.description}</p>
