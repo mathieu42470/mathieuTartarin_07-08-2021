@@ -114,6 +114,9 @@ h2{
 .align{
     align-self: center;
 }
+th{
+    text-align: center;
+}
 
 @media (min-width: 100px) and (max-width: 600px){
     .flex{

@@ -6,6 +6,7 @@
                 <meta name="description" content="site de e-commerce pour vos peluches">
                 <title>Panier Orinoco, site de e-commerce pour vos peluches</title>
                 <link rel="stylesheet" href="css/accueil.css"/>
+                <script src="js/panier.js" defer></script>
         </head>
         <body>
                 <div class="container bg-1">
@@ -22,29 +23,21 @@
                                <main>
                                          <section class="bg mt">
                                                  <table class="container ml-1">
-                                                         <h2>votre commande</h2>
+                                                         <h2 id="h2">votre commande</h2>
                                                          <thead>
                                                            <tr>
-                                                                 <th>Produit</th>
-                                                                 <th>Quantité</th>
-                                                                 <th>Prix</th>
-                                                                 <th>total</th>
+                                                                 <th id="produit">Produit</th>
+                                                                 <th id="nombre">Quantité</th>
+                                                                 <th id="prix">Prix</th>
+                                                                 <th id="total">total</th>
                                                            </tr>
                                                          </thead>
-                                                         <tbody>
-                                                                 <tr>
-                                                                         <th></th>
-                                                                         <th><input class="input" type="number"> </th>
-                                                                         <th><input class="input" type="number"> </th>
-                                                                         <th><input class="input" type="number"> </th>
-                                                                 </tr>
+                                                         <tbody class="" >
+                                                                <tr>
+                                                                        <th class="">total</th>
+                                                                        <th><input class="input" type="number"> </th>
+                                                                </tr>
                                                          </tbody>
-                                                         <tfoot>
-                                                                 <tr>
-                                                                         <th>total</th>
-                                                                         <th><input class="input" type="number"> </th>
-                                                                 </tr>
-                                                         </tfoot>
                                                  </table>
                                          </section>
                                          <section class="bg mt">

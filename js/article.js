@@ -49,5 +49,7 @@ function displayArticle(article){
               </div>` 
               }
 
-
-             
+let panier = document.getElementById("panier");
+panier.addEventListener("click" ,(event)=>{
+  event.preventDefault();
+})           
