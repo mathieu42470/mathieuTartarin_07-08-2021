@@ -55,7 +55,7 @@ p{
     padding-top: 2%;
 }
 .ml-1{
-    margin-left: 2%;
+    margin-left: 10px;
 }
 .my-1{
     margin-bottom: 2%;
@@ -102,6 +102,17 @@ h2{
 }
 .border{
     border: black solid;
+}
+.pl-1{
+    padding-left: 30%;
+}
+.h-11{
+    width: 75%;
+    height: 40rem;
+    object-fit: cover;
+}
+.align{
+    align-self: center;
 }
 
 @media (min-width: 100px) and (max-width: 600px){
