@@ -52,4 +52,17 @@ function displayArticle(article){
 let panier = document.getElementById("panier");
 panier.addEventListener("click" ,(event)=>{
   event.preventDefault();
+
+
+
+  let articleEnregistre = JSON.parse(localStorage.getItem("article"));
+  if(articleEnregistre){
+    articleEnregistre.push(article);
+    localStorage.setItem("article", JSON.stringify(articleEnregistre));
+  }
+  else{
+    articleEnregistre = [];
+    articleEnregistre.push(article);
+    localStorage.setItem("article", JSON.stringify(articleEnregistre));
+  }
 })           
