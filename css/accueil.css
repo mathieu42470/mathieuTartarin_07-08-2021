@@ -117,7 +117,9 @@ h2{
 th{
     text-align: center;
 }
-
+.direction-reverse{
+    flex-direction: column-reverse;
+}
 @media (min-width: 100px) and (max-width: 600px){
     .flex{
          display: flex;

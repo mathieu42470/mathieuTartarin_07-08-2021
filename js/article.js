@@ -47,15 +47,15 @@ function displayArticle(article){
                 </div>
               </div>
               </div>` 
-              }
-
+              
+//ecoute du click sur l'ajout au panier//
 let panier = document.getElementById("panier");
 panier.addEventListener("click" ,(event)=>{
   event.preventDefault();
 
-
-
-  let articleEnregistre = JSON.parse(localStorage.getItem("article"));
+  
+  // mise en place du local storage//
+  let articleEnregistre = JSON.parse(localStorage.getItem("articleEnregistre"));
   if(articleEnregistre){
     articleEnregistre.push(article);
     localStorage.setItem("article", JSON.stringify(articleEnregistre));
@@ -65,4 +65,5 @@ panier.addEventListener("click" ,(event)=>{
     articleEnregistre.push(article);
     localStorage.setItem("article", JSON.stringify(articleEnregistre));
   }
-})           
+})  
+ }        
