@@ -56,7 +56,7 @@ panier.addEventListener("click" ,(event)=>{
 
   
   // mise en place du local storage//
-  let articlesEnregistres = JSON.parse(localStorage.getItem("articlesEnregistres"));
+  let articlesEnregistres = JSON.parse(localStorage.getItem("article"));
   if(articlesEnregistres){
     articlesEnregistres.push(article);
     localStorage.setItem("article", JSON.stringify(articlesEnregistres));
