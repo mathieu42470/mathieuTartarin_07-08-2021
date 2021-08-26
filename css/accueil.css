@@ -120,6 +120,9 @@ th{
 .direction-reverse{
     flex-direction: column-reverse;
 }
+.width{
+    width: 100%;
+}
 @media (min-width: 100px) and (max-width: 600px){
     .flex{
          display: flex;

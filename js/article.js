@@ -1,7 +1,6 @@
 main ()
-async function main(){
-    let article = await getArticle(getArticleId());
-    displayArticle(article);
+function main(){
+    getArticle(getArticleId());    
   }
 
   // parametrage pour prendre l'id de l'article //
@@ -13,30 +12,27 @@ async function main(){
 
 // recuperation des articles de nounours //
 function getArticle(articleId) {
-               return fetch(`http://localhost:3000/api/teddies/${articleId}`)
-                            .then(function(httpBodyResponse) {
-                            return httpBodyResponse.json()
-                            })
-                            .then(function(articles){
+                fetch(`http://localhost:3000/api/teddies/${articleId}`)
+                            .then(response =>(response.json()))
+                            .then(article =>{
                               //selection de la couleur//
-                               articles.colors.forEach(color => {
+                              displayArticle(article);
+                              article.colors.forEach(color => {
                                  let option = document.createElement('option');
                                  option.textContent = color;
                                  document.getElementById('nomproduit').appendChild(option);
-
-
                                });
-                                           return articles
+                                            
                             })
-                            .catch(function(error) {
-                                           alert(Error)
+                            .catch(error => {
+                                           alert("une erreur est survenue"+error)
                             })
                            }
              
 
 // mise en page de l'article //
 function displayArticle(article){
-  console.log(article);
+  // console.log(article);
                document.getElementById("produitlist").innerHTML +=`
                 <div class="card list-none ms border-radius my-1" style="width: 100%;">
                 <h1 class="flex center list-none"><strong>${article.name}</strong></h1>
@@ -47,24 +43,26 @@ function displayArticle(article){
                 </div>
               </div>
               </div>` 
- 
-              
-//ecoute du click pour l'ajout au panier//
-let panier = document.getElementById("panier");
-panier.addEventListener("click" ,(event)=>{
-  event.preventDefault();
 
-  
-  // mise en place du local storage//
+  let panier = document.getElementById("panier");
+    panier.addEventListener("click" ,()=>{
+
+      changepage(article);
+      })  
+}    
+
+ function changepage(article){
+    // mise en place du local storage//
+    let color = document.getElementById('nomproduit').value;
+   
   let articlesEnregistres = JSON.parse(localStorage.getItem("article"));
   if(articlesEnregistres){
-    articlesEnregistres.push(article);
+    articlesEnregistres.push({article : article, color:color});
     localStorage.setItem("article", JSON.stringify(articlesEnregistres));
   }
   else{
     articlesEnregistres = [];
-    articlesEnregistres.push(article);
+    articlesEnregistres.push({article : article, color:color});
     localStorage.setItem("article", JSON.stringify(articlesEnregistres));
   }
-})  
- }        
+ }
