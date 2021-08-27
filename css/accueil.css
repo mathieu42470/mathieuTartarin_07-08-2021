@@ -123,6 +123,9 @@ th{
 .width{
     width: 100%;
 }
+.end{
+    justify-content: end;
+}
 @media (min-width: 100px) and (max-width: 600px){
     .flex{
          display: flex;

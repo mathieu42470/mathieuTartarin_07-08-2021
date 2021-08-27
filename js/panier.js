@@ -17,8 +17,8 @@ if(articlesEnregistres == null){
           <div class=" flex justify-content ml-1 col-12">
            <div class="flex"> ${articlesEnregistres[k].article.name}</div>
            <div class="flex"> ${articlesEnregistres[k].color}</div>
-           <select name="nombre"class="flex">
-           <option value="nombre de peluche">nombre de peluche</option>
+           <select name="nombre value="nombredepeluche" "class="flex">
+           <option>nombre de peluche</option>
            <option value="1">1</option>
            <option value="2">2</option>
            <option value="3">3</option>
@@ -26,22 +26,26 @@ if(articlesEnregistres == null){
            <option value="5">5</option>
            <option value="6">6</option>
               </select>
-           <div class="flex"> ${articlesEnregistres[k].article.price/100} €</div>
-           <div class="flex">
-           </div>
-          </div> `                                       
-         }   
+             <div class="flex" value="">${articlesEnregistres[k].article.price/100} €</div>
+             <div  class="flex">${articlesEnregistres[k].article.price/100} €</div>
+             </div>
+           `;
 }
+            }           
+
+
+
+
 
 // calcul prix total //
 
 function prixArticleTotal(){
 let prixArticleTotal = document.getElementById("prixtotal");
-for(let prixArticleTotal = 0; l <articlesEnregistres.length; l++){
+for (l = 0; l <articlesEnregistres.length; l++){
    let prixArticleTotal = articlesEnregistres[l].article.price;
-   prixTotalPanier.push(prixArticleTotal)
+   prixTotalPanier.push(prixArticleTotal);
 }
 const reducer = (accumulator, currentvalue) => accumulator + currentvalue;
 const prixtotal = prixTotalPanier.reduce(reducer,0);
-
+console.log(prixArticleTotal);
 }
