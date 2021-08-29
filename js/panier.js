@@ -14,25 +14,27 @@ if(articlesEnregistres == null){
           for (k = 0; k <articlesEnregistres.length; k++){
            let listeArticle = document.getElementById("listearticle");
           listeArticle.innerHTML +=`
-          <div class=" flex justify-content ml-1 col-12">
-           <div class="flex"> ${articlesEnregistres[k].article.name}</div>
-           <div class="flex"> ${articlesEnregistres[k].color}</div>
-           <select name="nombre value="nombredepeluche" "class="flex">
-           <option>nombre de peluche</option>
-           <option value="1">1</option>
-           <option value="2">2</option>
-           <option value="3">3</option>
-           <option value="4">4</option>
-           <option value="5">5</option>
-           <option value="6">6</option>
-              </select>
-             <div class="flex" value="">${articlesEnregistres[k].article.price/100} €</div>
-             <div  class="flex">${articlesEnregistres[k].article.price/100} €</div>
-             </div>
+   <tr class="flex justify-content">
+             <th class="flex"> ${articlesEnregistres[k].article.name}</th >
+             <th  class="flex"> ${articlesEnregistres[k].color}</th >
+             <th>
+                <select name="number" value="nombredepeluche" "class="flex">
+                   <option>nombre de peluche</option>
+                   <option value="1">1</option>
+                   <option value="2">2</option>
+                   <option value="3">3</option>
+                   <option value="4">4</option>
+                   <option value="5">5</option>
+                   <option value="6">6</option>
+                </select>
+             </th>
+             <th class="flex" value="">${articlesEnregistres[k].article.price/100} €</th > 
+             <th class="flex"> €</th >
+            </tr>
            `;
+    }
 }
-            }           
-
+            
 
 
 
@@ -47,5 +49,13 @@ for (l = 0; l <articlesEnregistres.length; l++){
 }
 const reducer = (accumulator, currentvalue) => accumulator + currentvalue;
 const prixtotal = prixTotalPanier.reduce(reducer,0);
-console.log(prixArticleTotal);
+}
+
+
+//activation du bouton de commande//
+function boutonCommande(){
+   let  = document.getElementById(boutonCommande);
+   if(boutonCommande){
+      
+   }
 }
