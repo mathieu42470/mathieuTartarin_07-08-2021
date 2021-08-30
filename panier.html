@@ -29,45 +29,47 @@
                                                          <thead>
                                                            <tr class="flex justify-content"><th>Produit</th><th>couleur</th><th>Quantité</th> <th>Prix</th><th>total</th></tr>   
                                                          </thead>
-                                                         <tbody id="listearticle"> </tbody>
+                                                         <tbody id="listearticle">
+                                                                <tr class="flex justify-content"><th id="name"></th><th id="color"></th><th id="select"></th> <th id="price"></th><th id="total"></th></tr> 
+                                                         </tbody>
                                                  </table>        
-                                                 <p id="prixtotal" class="flex end">total : <span></span>€</p>
+                                                 <p id="totalprix" class="flex end"></p>
                                                  
                                          </section>
                                          <section class="bg mt">
                                                  <div class="ml-1">
                                                  <h2>vos coordonnées</h2>
                                                  <div>
-                                                       <form>
+                                                       <form name="form1" onsubmit="return boutonCommande()"  method="POST" action="">
                                                            <div class="flex justify-content mt col-12 column"> 
                                                                 <div class="flex direction">
                                                                        <label class="label" for="firstName">Prénom</label>
-                                                                       <input class="input" type="text" name="firstName" required>
+                                                                       <input id="prenom" class="input" type="text" name="prenom" required/>
                                                                  </div>
                                                                  <div class="flex direction">
                                                                          <label class="label" for="lastName">Nom</label>
-                                                                         <input class="input" type="text" name="lastName" required>
+                                                                         <input id="nom" class="input" type="text" name="nom" required/>
                                                                  </div> 
                                                                  <div class="flex direction">
                                                                          <label class="label" for="mail">Adresse e-mail</label>
-                                                                         <input class="input" type="email" name="mail" required>
+                                                                         <input id="mail" class="input" type="email" name="mail" required/>
                                                                  </div>
                                                            </div> 
                                                            <div class="flex justify-content mt col-12 column">
                                                                    <div class="flex direction">
                                                                            <label class="label" for="adresse">Adresse</label>
-                                                                           <input class="input" type="text" name="adresse" required>
+                                                                           <input id="adresse" class="input" type="text" name="adresse" required/>
                                                                    </div>
                                                                    <div class="flex direction">
                                                                            <label class="label" for="codePostal">Code postal</label>
-                                                                           <input class="input" type="number" name="codePostal" minlength="6" maxlength="6" placeholder="6 chiffres" required>
+                                                                           <input id="codepostal" class="input" type="number" name="codePostal" minlength="6" maxlength="6" placeholder="6 chiffres" required/>
                                                                    </div>
                                                                    <div class="flex direction">
                                                                            <label class="label" for="ville">ville</label>
-                                                                           <input class="input" type="text" name="ville" required>
+                                                                           <input id="ville" class="input" type="text" name="ville" required/>
                                                                    </div>
                                                            </div>
-                                                           <a id="boutonCommande" href="orderstatus.html" class="mt">commande</a>
+                                                          <a><button id="bouton" href="orderstatus.html" class="mt">commande</button></a>
                                                        </form>
                                                  </div>
                                                  </div>                                                        
