@@ -37,42 +37,39 @@
                                                  
                                          </section>
                                          <section class="bg mt">
-                                                 <div class="ml-1">
                                                  <h2>vos coordonnées</h2>
-                                                 <div>
-                                                       <form name="form1" onsubmit="return boutonCommande()"  method="POST" action="">
+                                                       <form name="form1" method="POST" action="">
                                                            <div class="flex justify-content mt col-12 column"> 
                                                                 <div class="flex direction">
                                                                        <label class="label" for="firstName">Prénom</label>
-                                                                       <input id="prenom" class="input" type="text" name="prenom" required/>
+                                                                       <input id="prenom" class="input" type="text" name="prenom"/>
                                                                  </div>
                                                                  <div class="flex direction">
                                                                          <label class="label" for="lastName">Nom</label>
-                                                                         <input id="nom" class="input" type="text" name="nom" required/>
+                                                                         <input id="nom" class="input" type="text" name="nom"/>
                                                                  </div> 
                                                                  <div class="flex direction">
                                                                          <label class="label" for="mail">Adresse e-mail</label>
-                                                                         <input id="mail" class="input" type="email" name="mail" required/>
+                                                                         <input id="mail" class="input" type="email" name="mail"/>
                                                                  </div>
                                                            </div> 
                                                            <div class="flex justify-content mt col-12 column">
                                                                    <div class="flex direction">
                                                                            <label class="label" for="adresse">Adresse</label>
-                                                                           <input id="adresse" class="input" type="text" name="adresse" required/>
+                                                                           <input id="adresse" class="input" type="text" name="adresse"/>
                                                                    </div>
                                                                    <div class="flex direction">
                                                                            <label class="label" for="codePostal">Code postal</label>
-                                                                           <input id="codepostal" class="input" type="number" name="codePostal" minlength="6" maxlength="6" placeholder="6 chiffres" required/>
+                                                                           <input id="codepostal" class="input" type="number" name="codePostal" placeholder="6 chiffres" pattern="[0-9]{2}[ -][0-9]{3}"/>
                                                                    </div>
                                                                    <div class="flex direction">
                                                                            <label class="label" for="ville">ville</label>
-                                                                           <input id="ville" class="input" type="text" name="ville" required/>
+                                                                           <input id="ville" class="input" type="text" name="ville"/>
                                                                    </div>
                                                            </div>
-                                                          <a><button id="bouton" href="orderstatus.html" class="mt">commande</button></a>
-                                                       </form>
-                                                 </div>
-                                                 </div>                                                        
+                                                         <input id="bouton" type="submit" class="mt" value="commande"></input>
+                                                       </form>  
+                                                       <p id="erreur"></p>                                                  
                                          </section>
                                </main>
                                <footer>

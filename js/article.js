@@ -1,6 +1,6 @@
 main ()
 function main(){
-    getArticle(getArticleId());    
+    getArticle(getArticleId());
   }
 
   // parametrage pour prendre l'id de l'article //
@@ -22,13 +22,13 @@ function getArticle(articleId) {
                                  option.textContent = color;
                                  document.getElementById('nomproduit').appendChild(option);
                                });
-                                            
+
                             })
                             .catch(error => {
                                            alert("une erreur est survenue"+error)
                             })
                            }
-             
+
 
 // mise en page de l'article //
 function displayArticle(article){
@@ -42,27 +42,35 @@ function displayArticle(article){
                   <p class="list-none"><strong>${article.price/100}€</strong></p>
                 </div>
               </div>
-              </div>` 
+              </div>`
 
   let panier = document.getElementById("panier");
     panier.addEventListener("click" ,()=>{
 
       changepage(article);
-      })  
-}    
+      })
+}
 
  function changepage(article){
     // mise en place du local storage//
     let color = document.getElementById('nomproduit').value;
-   
+
   let articlesEnregistres = JSON.parse(localStorage.getItem("article"));
-  if(articlesEnregistres){
-    articlesEnregistres.push({article : article, color:color});
-    localStorage.setItem("article", JSON.stringify(articlesEnregistres));
-  }
-  else{
+  if(!articlesEnregistres){
     articlesEnregistres = [];
-    articlesEnregistres.push({article : article, color:color});
-    localStorage.setItem("article", JSON.stringify(articlesEnregistres));
   }
+    // console.log("Couleur selectionnée"+color);
+    // console.log(article._id);
+    // console.log(articlesEnregistres);
+    let obj = articlesEnregistres.find(x => x.article._id == article._id && x.color == color);    
+    if(obj != null){      
+      articlesEnregistres.splice(articlesEnregistres.indexOf(obj),1);
+      articlesEnregistres.push({article : article, color:color, quantite:obj.quantite+1*article.price});
+    }
+    else{      
+      articlesEnregistres.push({article : article, color:color, quantite:1});
+    }
+    localStorage.setItem("article", JSON.stringify(articlesEnregistres));
+  
+ 
  }
