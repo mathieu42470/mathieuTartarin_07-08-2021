@@ -56,6 +56,7 @@ function displayArticle(article){
     let color = document.getElementById('nomproduit').value;
 
   let articlesEnregistres = JSON.parse(localStorage.getItem("article"));
+  
   if(!articlesEnregistres){
     articlesEnregistres = [];
   }
@@ -65,12 +66,10 @@ function displayArticle(article){
     let obj = articlesEnregistres.find(x => x.article._id == article._id && x.color == color);    
     if(obj != null){      
       articlesEnregistres.splice(articlesEnregistres.indexOf(obj),1);
-      articlesEnregistres.push({article : article, color:color, quantite:obj.quantite+1*article.price});
+      articlesEnregistres.push({article : article, color:color, quantite:obj.quantite+1});
     }
     else{      
       articlesEnregistres.push({article : article, color:color, quantite:1});
     }
     localStorage.setItem("article", JSON.stringify(articlesEnregistres));
-  
- 
  }

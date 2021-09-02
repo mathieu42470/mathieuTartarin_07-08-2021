@@ -19,28 +19,24 @@
              <th class="flex"> ${articlesEnregistres[a].article.name}</th >
              <th  class="flex"> ${articlesEnregistres[a].color}</th >
              <th>
-                <select id="valueNounours" name="number" value="nombredepeluche" "class="flex">${articlesEnregistres[a].quantite.value}</select>
+                <select id="valueNounours" name="number" value="nombredepeluche" "class="flex">
+                <option value="0">${articlesEnregistres[a].quantite}</option>
+                <option value="1">${articlesEnregistres[a].quantite}</option>
+                <option value="2">${articlesEnregistres[a].quantite}</option>
+                <option value="3">${articlesEnregistres[a].quantite}</option>
+                <option value="4">${articlesEnregistres[a].quantite}</option>
+                <option value="5">${articlesEnregistres[a].quantite}</option>
+                <option value="6">${articlesEnregistres[a].quantite}</option>
+                </select>
              </th>
              <th id="prixarticle" class="flex" value="">${articlesEnregistres[a].article.price/100} €</th > 
-             <th id="prixArticleTotal" class="flex"> €</th >
+             <th id="prixArticleTotal" class="flex">${(articlesEnregistres[a].article.price/100)*articlesEnregistres[a].quantite} €</th >
           </tr>`;    
           }
              if(a == articlesEnregistres.length){
                 listeArticle.innerHTML = panierProduit;
              }
     }
-// prix total article //
-let prixTotalArticle = [];
-let prixArticle = document.querySelector("#prixarticle");
-prixArticle = articlesEnregistres.price/100;
-let nombreNounours = document.querySelector("#valueNounours");
-   nombreNounours.value = 1;
-   prixTotalArticle = nombreNounours.value*prixArticle;
-  let totalArticle = document.querySelector("#ArticleTotal")
-  totalArticle.innerHTML = `
-  <p>${ArticleTotal} €</p>`;
-
-
 
 // prix total panier //      
 let prixTotalPanier = [];
