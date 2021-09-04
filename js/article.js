@@ -32,7 +32,6 @@ function getArticle(articleId) {
 
 // mise en page de l'article //
 function displayArticle(article){
-  // console.log(article);
                document.getElementById("produitlist").innerHTML +=`
                 <div class="card list-none ms border-radius my-1" style="width: 100%;">
                 <h1 class="flex center list-none"><strong>${article.name}</strong></h1>
@@ -60,9 +59,7 @@ function displayArticle(article){
   if(!articlesEnregistres){
     articlesEnregistres = [];
   }
-    // console.log("Couleur selectionnée"+color);
-    // console.log(article._id);
-    // console.log(articlesEnregistres);
+  
     let obj = articlesEnregistres.find(x => x.article._id == article._id && x.color == color);    
     if(obj != null){      
       articlesEnregistres.splice(articlesEnregistres.indexOf(obj),1);
