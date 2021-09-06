@@ -12,7 +12,9 @@
        listeArticle.innerHTML = panierVide;
     }else{
           let panierProduit = [];
+            
           for (a = 0; a < articlesEnregistres.length; a++){
+          let prixArticles = (articlesEnregistres[a].article.price/100)*articlesEnregistres[a].quantite; 
            panierProduit = panierProduit +`
           <tr class="flex justify-content">
              <th class="flex"> ${articlesEnregistres[a].article.name}</th >
@@ -29,64 +31,215 @@
                 </select>
              </th>
              <th id="prixarticle" class="flex" value="">${articlesEnregistres[a].article.price/100} €</th > 
-             <th id="prixArticleTotal" class="flex">${prixArticles =(articlesEnregistres[a].article.price/100)*articlesEnregistres[a].quantite} €</th >
-          </tr>`;    
+             <th id="prixArticleTotal" class="flex">${prixArticles} €</th >
+          </tr>`;  
+          console.log(prixArticles)
           }
              if(a == articlesEnregistres.length){
                 listeArticle.innerHTML = panierProduit;
              }
 } 
 
-function prixTotal(prixArticles){
-for (l = 0; l <prixArticles.length; l++){
-   let prixTotal = prixArticles[l];
-   console.log("le prix est de",prixArticles)
-}
-const reducer = (accumulator, currentvalue) => accumulator + currentvalue;
-const prixtotal = prixArticles[l].reduce(reducer,0);
-let totalPanier = document.getElementById("totalprix")
-totalPanier.innerHTML = `
-<p>le prix total est de <strong>${prixTotal}€<strong></p>`;
- prix = [];
-    prix.push({prixTotal});
-   let  prix = JSON.parse(localStorage.getItem("prix"));
-    localStorage.setItem("prix", JSON.stringify(prix));
-    console.log("le prix est de", prixTotal);
-}
-
-//evennement de click pour le bouton commande//
-document.forms["form1"].addEventListener("submit" ,function(e){
-let erreur;
-let inputs = this;
-for(i = 0; i < inputs.length; i++){
-   if(!inputs[i].value){
-      erreur = "merci de remplir tous les champs obligatoire";
-   }
-}
-if(erreur){
-   e.preventDefault();
-   document.getElementById("erreur").innerHTML= erreur;
-   return false;
-}
-   else{ 
-     window.location = "../orderstatus.html";
-     return true;
-   }
-})
-
-
-// function prixTotal(prixArticles){
-//    for (x = 0; x < prixArticles.length; x++){
-//    if(prixArticles[x] != null){
+// function prixTotal(prixArticles) {
+// for (l = 0; l < prixArticles.length; l++){
+//    let prixTotal = prixArticles[l];
+//    console.log("le prix est de",prixArticles);
+// }
+// if(prixArticles[l] != null){
 //        let prixArt = parseInt(prixArticles[x]);
-//       prix =  prix + prixArticles[x];
-//       console.log("je suis là", prixArticles[x]);
-//    }else{
-//    }
+//          prix =  prix + prixArt;
+//       console.log("je suis là", prixArt);
+//  }else{
+//       }
+// let totalPanier = document.getElementById("totalprix")
+// totalPanier.innerHTML = `
+// <p>le prix total est de <strong>${prixTotal}€<strong></p>`;
+//  prix = [];
+//     prix.push({prixTotal});
+//    let  prix = JSON.parse(localStorage.getItem("prix"));
+//     localStorage.setItem("prix", JSON.stringify(prix));
+//     console.log("le prix est de", prixTotal);
+ //}
+function prix(prixArticles){
+   if(prixAr != null){
+       let prixArt = parseInt(prixArticles);
+      prix =  prix + prixArt;
+      console.log("je suis là", prix);
+   }else{
+   }
 //    let totalPanier = document.getElementById("totalprix");
 //   totalPanier.innerHTML = `
 // <p>le prix total est de <strong>${prixTotalPanier()}€<strong></p>`;
-// }
-// }
+// prix = [];
+//     prix.push({prixTotal});
+//    let  prix = JSON.parse(localStorage.getItem("prix"));
+//     localStorage.setItem("prix", JSON.stringify(prix));
+//     console.log("le prix est de", prixTotal);
+}
 
 
+
+//evennement de click pour le bouton commande//
+//  document.forms["form1"].addEventListener("submit" ,function(e){
+// let erreur;
+// let inputs = this;
+// for(i = 0; i < inputs.length; i++){
+//    if(!inputs[i].value){
+//       erreur = "merci de remplir tous les champs obligatoire";
+//    }
+// }
+// if(erreur){
+//    e.preventDefault();
+//    document.getElementById("erreur").innerHTML= erreur;
+//    return false;
+// }
+//    else{ 
+//      window.location = "../orderstatus.html";
+//      return true;
+//    }
+// })
+
+
+//formulaire //
+   let formulaire = document.getElementById("formulaire");
+   formulaire.innerHTML= `
+   <h2>vos coordonnées</h2>
+       <form name="form1" method="POST" action="">
+           <div class="flex justify-content mt col-12 column"> 
+             <div class="flex direction">
+                <label class="label" for="firstName">Prénom</label>
+                <input id="prenom" class="input" type="text" name="prenom"/>
+             </div>
+             <div class="flex direction">
+                <label class="label" for="lastName">Nom</label>
+                <input id="nom" class="input" type="text" name="nom"/>
+             </div> 
+             <div class="flex direction">
+                <label class="label" for="mail">Adresse e-mail</label>
+                <input id="mail" class="input" type="email" name="mail"/>
+             </div>
+             </div> 
+             <div class="flex justify-content mt col-12 column">
+             <div class="flex direction">
+                <label class="label" for="adresse">Adresse</label>
+                <input id="adresse" class="input" type="text" name="adresse"/>
+             </div>
+             <div class="flex direction">
+                <label class="label" for="codePostal">Code postal</label>
+                <input id="codepostal" class="input" type="number" name="codePostal"/>
+             </div>
+             <div class="flex direction">
+                <label class="label" for="ville">ville</label>
+                <input id="ville" class="input" type="text" name="ville"/>
+             </div>
+             </div>
+             <input id="bouton" type="submit" class="mt"></input>
+        </form>   
+   `
+
+let boutonCommande = document.querySelector("#bouton");
+//bouton commande ecoute du click//
+boutonCommande.addEventListener("click", ()=>{
+   
+let coordonnes = {
+  prenom : document.querySelector("#prenom").value,
+  nom : document.querySelector("#nom").value,
+  mail : document.querySelector("#mail").value,
+  adresse : document.querySelector("#adresse").value,
+  codepostal : document.querySelector("#codepostal").value,
+  ville: document.querySelector("#ville").value 
+} 
+
+let regExPrenom = (value) => {
+    return /^[A-Za-z/-]{3,20}$/.test(value);
+}
+
+let regExCodePostal = (value) => {
+   return /^[0-9]{5}$/.test(value);
+}
+
+let regExMail = (value) =>{
+   return /^[0-9a-z._-]+@{1}[0-9a-z.-]{2,}[.]{1}[a-z]{2,5}$/.test(value);
+}
+
+let regExAdresse = (value) =>{
+      return /^[A-Za-z0-9 ]{3,40}$/.test(value);
+}
+
+let textAlert = (value) =>{
+   return `Merci de bien remplir ${value} avec entre 3 et 20 lettres uniquement`;
+}
+
+// condition pour le prénom
+function prenomControle(){
+let prenom = coordonnes.prenom;
+if (regExPrenom(prenom)){
+   return true;
+}else{
+   alert(textAlert("le Prénom"));
+   return false;
+}
+}
+
+//condition pour le nom
+function nomControle(){
+   let nom = coordonnes.nom;
+   if (regExPrenom(nom)){
+      return true;
+   }else{
+      alert(textAlert("le Nom"));
+      return false;
+   }
+}
+
+//condition pour la ville
+function villeControle(){
+   let ville = coordonnes.ville;
+   if (regExPrenom(ville)){
+      return true;
+   }else{
+      alert(textAlert("la ville"));
+      return false;
+   }
+}
+
+//condition pour le code postal
+function codePostalControle(){
+   let codePostal = coordonnes.codepostal;
+   if (regExCodePostal(codePostal)){
+      return true;
+   }else{
+      alert("le code postal doit etre de 5 chiffres uniquement");
+      return false;
+   }
+}
+
+// condition pour l'adresse
+function adresseControle(){
+   let adresse = coordonnes.adresse;
+   if (regExAdresse(adresse)){
+      return true;
+   }else{
+      alert(textAlert("l'adresse doit contenir uniquement des chiffres et des lettres"));
+      return false;
+   }
+   }
+
+//condition pour le mail
+function mailControle(){
+   let mail = coordonnes.mail;
+   if (regExMail(mail)){
+      return true;
+   }else{
+      alert("le mail n'est pas valide");
+      return false;
+   }
+}
+
+// envoi du formulaire dans le local storage 
+if(prenomControle() && nomControle() && villeControle() && codePostalControle() && mailControle() && adresseControle()) {
+localStorage.setItem("coordonnes", JSON.stringify(coordonnes));
+}else{
+   alert("merci de bien remplir le formulaire");
+}
+})
