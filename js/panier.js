@@ -1,6 +1,5 @@
 // récuperation du local storage//
    let articlesEnregistres = JSON.parse(localStorage.getItem("article"));
-   //  let prixarticle = JSON.parse(localStorage.getItem("prixArticle"));
  
 
 // mise en place panier//
@@ -13,14 +12,13 @@
     }else{
           let panierProduit = [];
           for (a = 0; a < articlesEnregistres.length; a++){
-          let prixArticle = (articlesEnregistres[a].article.price/100)*articlesEnregistres[a].quantite; 
            panierProduit = panierProduit +`
           <tr class="flex justify-content">
-             <th class="flex"> ${articlesEnregistres[a].article.name}</th >
-             <th  class="flex"> ${articlesEnregistres[a].color}</th >
+             <th class="flex"> ${articlesEnregistres[a].lstArticles.article.name}</th >
+             <th  class="flex"> ${articlesEnregistres[a].lstArticles.color}</th >
              <th>
                 <select id="valueNounours" name="number" value="nombredepeluche" "class="flex">
-                <option value="nounourscommander">${articlesEnregistres[a].quantite}</option>
+                <option value="nounourscommander">${articlesEnregistres[a].lstArticles.quantite}</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -29,27 +27,16 @@
                 <option value="6">6</option>
                 </select>
              </th>
-             <th id="prixarticle" class="flex" value="">${articlesEnregistres[a].article.price/100} €</th > 
+             <th id="prixarticle" class="flex" value="">${articlesEnregistres[a].lstArticles.article.price/100} €</th > 
              <th id="prixArticles" class="flex">${prixArticle} €</th >
           </tr>`;  
           }
              if(a == articlesEnregistres.length){
                 listeArticle.innerHTML = panierProduit;
              }
-          function prix(){
-             if(prixArt != null){
-                let prixArt = parseInt(prixArticle, 0);
-                prix =  prix + prixArt;
-             }else{
-                prix = prixArt;
-             }
              let totalPanier = document.getElementById("totalprix");
              totalPanier.innerHTML = `
-             <p>le prix total est de <strong>${prix}€<strong></p>`;
-             prixTotal = [];
-             prixTotal.push({prix});
-             let  prixTotal = JSON.parse(localStorage.getItem("prix")); 
-}
+             <p>le prix total est de <strong>${articlesEnregistres.priceTotal}€<strong></p>`;            
 }
 
        
@@ -207,14 +194,13 @@ let donneAEnvoyer ={
    coordonnes,
 };
 
-let promesse = fetch("http://localhost:3000/api/teddies", {
+fetch("http://localhost:3000/api/order", {
    method: "POST",
    body: JSON.stringify(donneAEnvoyer),
    headers: {
       "Content-Type": "application/json",
    },
-});
-promesse.then(async(Response)=>{
+}).then(async(Response)=>{
    try{
        let contenu = await Response.json();
        console.log("contenu");
@@ -223,4 +209,4 @@ promesse.then(async(Response)=>{
        console.log(e);
    }
 })
-});
+})

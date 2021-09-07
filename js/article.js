@@ -54,19 +54,40 @@ function displayArticle(article){
     // mise en place du local storage//
     let color = document.getElementById('nomproduit').value;
     let articlesEnregistres = JSON.parse(localStorage.getItem("article"));
-  if(!articlesEnregistres){
-    articlesEnregistres = [];
-  }
-    let obj = articlesEnregistres.find(x => x.article._id == article._id && x.color == color);    
+    if(!articlesEnregistres){
+      articlesEnregistres = {};
+    }
+    if(!articlesEnregistres.lstArticles){
+      articlesEnregistres.lstArticles = [];
+    }
+  
+    let obj = articlesEnregistres.lstArticles.find(x => x.article._id == article._id && x.color == color);    
     if(obj != null){      
-      articlesEnregistres.splice(articlesEnregistres.indexOf(obj),1);
-      articlesEnregistres.push({article : article, color:color, quantite:obj.quantite+1});
+      articlesEnregistres.lstArticles.splice(articlesEnregistres.lstArticles.indexOf(obj),1);
+      articlesEnregistres.lstArticles.push({article : article, color:color, quantite:obj.quantite+1});
     }
     else{      
-      articlesEnregistres.push({article : article, color:color, quantite:1});
-    }
-    localStorage.setItem("article", JSON.stringify(articlesEnregistres));
 
+      articlesEnregistres.lstArticles.push({article : article, color:color, quantite:1});
+    }
+    // on recalcule le prix total et de chaque article
+    calculTotal(articlesEnregistres.lstArticles);
+
+    articlesEnregistres.PriceTotal = calculTotal(articlesEnregistres.lstArticles);
+ 
+    localStorage.setItem("article", JSON.stringify(articlesEnregistres));
+  }
+
+  function calculTotal(lstArticles){
+    
+   let PriceTotal = 0;
+    for(var i = 0; i<lstArticles.length;i++){
+      // console.log("quantite art "+lstArticles[i].quantite);
+      // console.log("price art"+lstArticles[i].price/100);
+      // console.log(lstArticles[i]);
+      PriceTotal = lstArticles[i].quantite*(lstArticles[i].article.price/100) + PriceTotal;
+    }
+    return PriceTotal;
   }
  
 
