@@ -1,6 +1,6 @@
 // récuperation du local storage//
    let articlesEnregistres = JSON.parse(localStorage.getItem("article"));
-  
+   //  let prixarticle = JSON.parse(localStorage.getItem("prixArticle"));
  
 
 // mise en place panier//
@@ -12,9 +12,8 @@
        listeArticle.innerHTML = panierVide;
     }else{
           let panierProduit = [];
-            
           for (a = 0; a < articlesEnregistres.length; a++){
-          let prixArticles = (articlesEnregistres[a].article.price/100)*articlesEnregistres[a].quantite; 
+          let prixArticle = (articlesEnregistres[a].article.price/100)*articlesEnregistres[a].quantite; 
            panierProduit = panierProduit +`
           <tr class="flex justify-content">
              <th class="flex"> ${articlesEnregistres[a].article.name}</th >
@@ -31,73 +30,32 @@
                 </select>
              </th>
              <th id="prixarticle" class="flex" value="">${articlesEnregistres[a].article.price/100} €</th > 
-             <th id="prixArticleTotal" class="flex">${prixArticles} €</th >
+             <th id="prixArticles" class="flex">${prixArticle} €</th >
           </tr>`;  
-          console.log(prixArticles)
           }
              if(a == articlesEnregistres.length){
                 listeArticle.innerHTML = panierProduit;
              }
-} 
-
-// function prixTotal(prixArticles) {
-// for (l = 0; l < prixArticles.length; l++){
-//    let prixTotal = prixArticles[l];
-//    console.log("le prix est de",prixArticles);
-// }
-// if(prixArticles[l] != null){
-//        let prixArt = parseInt(prixArticles[x]);
-//          prix =  prix + prixArt;
-//       console.log("je suis là", prixArt);
-//  }else{
-//       }
-// let totalPanier = document.getElementById("totalprix")
-// totalPanier.innerHTML = `
-// <p>le prix total est de <strong>${prixTotal}€<strong></p>`;
-//  prix = [];
-//     prix.push({prixTotal});
-//    let  prix = JSON.parse(localStorage.getItem("prix"));
-//     localStorage.setItem("prix", JSON.stringify(prix));
-//     console.log("le prix est de", prixTotal);
- //}
-function prix(prixArticles){
-   if(prixAr != null){
-       let prixArt = parseInt(prixArticles);
-      prix =  prix + prixArt;
-      console.log("je suis là", prix);
-   }else{
-   }
-//    let totalPanier = document.getElementById("totalprix");
-//   totalPanier.innerHTML = `
-// <p>le prix total est de <strong>${prixTotalPanier()}€<strong></p>`;
-// prix = [];
-//     prix.push({prixTotal});
-//    let  prix = JSON.parse(localStorage.getItem("prix"));
-//     localStorage.setItem("prix", JSON.stringify(prix));
-//     console.log("le prix est de", prixTotal);
+          function prix(){
+             if(prixArt != null){
+                let prixArt = parseInt(prixArticle, 0);
+                prix =  prix + prixArt;
+             }else{
+                prix = prixArt;
+             }
+             let totalPanier = document.getElementById("totalprix");
+             totalPanier.innerHTML = `
+             <p>le prix total est de <strong>${prix}€<strong></p>`;
+             prixTotal = [];
+             prixTotal.push({prix});
+             let  prixTotal = JSON.parse(localStorage.getItem("prix")); 
+}
 }
 
+       
 
 
-//evennement de click pour le bouton commande//
-//  document.forms["form1"].addEventListener("submit" ,function(e){
-// let erreur;
-// let inputs = this;
-// for(i = 0; i < inputs.length; i++){
-//    if(!inputs[i].value){
-//       erreur = "merci de remplir tous les champs obligatoire";
-//    }
-// }
-// if(erreur){
-//    e.preventDefault();
-//    document.getElementById("erreur").innerHTML= erreur;
-//    return false;
-// }
-//    else{ 
-//      window.location = "../orderstatus.html";
-//      return true;
-//    }
-// })
+
 
 
 //formulaire //
@@ -242,4 +200,27 @@ localStorage.setItem("coordonnes", JSON.stringify(coordonnes));
 }else{
    alert("merci de bien remplir le formulaire");
 }
+
+// utilisation de fetch pour avoir un id lié a la commande //
+let donneAEnvoyer ={
+   articlesEnregistres,
+   coordonnes,
+};
+
+let promesse = fetch("http://localhost:3000/api/teddies", {
+   method: "POST",
+   body: JSON.stringify(donneAEnvoyer),
+   headers: {
+      "Content-Type": "application/json",
+   },
+});
+promesse.then(async(Response)=>{
+   try{
+       let contenu = await Response.json();
+       console.log("contenu");
+       console.log(contenu);
+   }catch(e){
+       console.log(e);
+   }
 })
+});

@@ -42,7 +42,7 @@ function displayArticle(article){
                 </div>
               </div>
               </div>`
-
+   
   let panier = document.getElementById("panier");
     panier.addEventListener("click" ,()=>{
 
@@ -53,13 +53,10 @@ function displayArticle(article){
  function changepage(article){
     // mise en place du local storage//
     let color = document.getElementById('nomproduit').value;
-
-  let articlesEnregistres = JSON.parse(localStorage.getItem("article"));
-  
+    let articlesEnregistres = JSON.parse(localStorage.getItem("article"));
   if(!articlesEnregistres){
     articlesEnregistres = [];
   }
-  
     let obj = articlesEnregistres.find(x => x.article._id == article._id && x.color == color);    
     if(obj != null){      
       articlesEnregistres.splice(articlesEnregistres.indexOf(obj),1);
@@ -69,4 +66,8 @@ function displayArticle(article){
       articlesEnregistres.push({article : article, color:color, quantite:1});
     }
     localStorage.setItem("article", JSON.stringify(articlesEnregistres));
- }
+
+  }
+ 
+
+ 
