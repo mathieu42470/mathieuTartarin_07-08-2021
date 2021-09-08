@@ -11,36 +11,25 @@
        listeArticle.innerHTML = panierVide;
     }else{
           let panierProduit = [];
-          for (a = 0; a < articlesEnregistres.length; a++){
-           panierProduit = panierProduit +`
+          for (a = 0; a < articlesEnregistres.lstArticles.length; a++){
+           panierProduit = panierProduit + `
           <tr class="flex justify-content">
-             <th class="flex"> ${articlesEnregistres[a].lstArticles.article.name}</th >
-             <th  class="flex"> ${articlesEnregistres[a].lstArticles.color}</th >
-             <th>
-                <select id="valueNounours" name="number" value="nombredepeluche" "class="flex">
-                <option value="nounourscommander">${articlesEnregistres[a].lstArticles.quantite}</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                </select>
-             </th>
-             <th id="prixarticle" class="flex" value="">${articlesEnregistres[a].lstArticles.article.price/100} €</th > 
-             <th id="prixArticles" class="flex">${prixArticle} €</th >
+             <th class="flex">${articlesEnregistres.lstArticles[a].article.name}</th >
+             <th  class="flex">${articlesEnregistres.lstArticles[a].color}</th >
+             <th class="flex">${articlesEnregistres.lstArticles[a].quantite} </th>
+             <th id="prixarticle" class="flex" value="">${articlesEnregistres.lstArticles[a].article.price/100}</th > 
+             <th id="prixArticles" class="flex">${articlesEnregistres.lstArticles[a].quantite*(articlesEnregistres.lstArticles[a].article.price/100)} €</th >
           </tr>`;  
           }
-             if(a == articlesEnregistres.length){
+             if(a == articlesEnregistres.lstArticles.length){
                 listeArticle.innerHTML = panierProduit;
-             }
-             let totalPanier = document.getElementById("totalprix");
-             totalPanier.innerHTML = `
-             <p>le prix total est de <strong>${articlesEnregistres.priceTotal}€<strong></p>`;            
+             }       
 }
 
        
-
+ let totalPanier = document.getElementById("totalprix");
+             totalPanier.innerHTML = `
+             <p>le prix total est de <strong>${articlesEnregistres.PriceTotal}€<strong></p>`;  
 
 
 

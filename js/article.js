@@ -76,8 +76,37 @@ function displayArticle(article){
     articlesEnregistres.PriceTotal = calculTotal(articlesEnregistres.lstArticles);
  
     localStorage.setItem("article", JSON.stringify(articlesEnregistres));
+
+
+    // creation d'un mini panier pour voir ce qu'il y a dedans en directet pouvoir supprimer des données//
+    let listeArticle = document.getElementById("listearticle");
+
+    if(articlesEnregistres.lstArticles === null){
+       let panierVide = `
+       <p> le panier est vide</p>`;
+       listeArticle.innerHTML = panierVide;
+    }else{
+          let panierProduit = [];
+          for (b = 0; b < articlesEnregistres.lstArticles.length; b++){
+           panierProduit = panierProduit + `
+          <tr class="flex justify-content">
+             <th class="flex">${articlesEnregistres.lstArticles[b].article.name}</th >
+             <th  class="flex">${articlesEnregistres.lstArticles[b].color}</th >
+             <th class="flex">${articlesEnregistres.lstArticles[b].quantite} </th>
+             <th id="prixarticle" class="flex" value="">${articlesEnregistres.lstArticles[b].article.price/100}</th > 
+             <th id="prixArticles" class="flex">${articlesEnregistres.lstArticles[b].quantite*(articlesEnregistres.lstArticles[b].article.price/100)} €</th >
+          </tr>`;  
+          }
+             if(b == articlesEnregistres.lstArticles.length){
+                listeArticle.innerHTML = panierProduit;
+             }       
+}
+ let totalPanier = document.getElementById("totalprix");
+             totalPanier.innerHTML = `
+             <p>le prix total est de <strong>${articlesEnregistres.PriceTotal}€<strong></p>`;  
   }
 
+  //fonction de calcul du total du panier//
   function calculTotal(lstArticles){
     
    let PriceTotal = 0;

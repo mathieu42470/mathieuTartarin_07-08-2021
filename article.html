@@ -21,15 +21,30 @@
                                                      </ul>
                                              </nav>
                               </header>
-                              <main id="main">
+                              <main  class="flex direction" id="main">
                                       <div id="produitlist" class="flex direction-reverse">
                                        <select id="nomproduit" class="border-radius">
                                                
                                        </select>
                                       </div>
-                                        
-                                      <a id="panier" href="panier.html" class="flex items-center border-radius">ajouter au panier</a>
-                                      
+                                
+                                      <button id="panier" class="flex items-center border-radius">ajouter au panier</button>
+                                      <section id="petitPanier" class="flex direction">
+                                              <div class="flex direction">
+                                                <table  class="container ml-1">
+                                                        <h2 id="h2">votre commande</h2>
+                                                        <thead>
+                                                          <tr class="flex justify-content"><th>Produit</th><th>couleur</th><th>Quantité</th> <th>Prix</th><th>total</th></tr>   
+                                                        </thead>
+                                                        <tbody id="listearticle">
+                                                               <tr class="flex justify-content"></tr> 
+                                                        </tbody>
+                                                       
+                                                <tfoot id="totalprix" class="flex end"></tfoot>
+                                                </table>
+                                              <a id="Panier" href="panier.html">Mon panier</a>
+                                        </div>
+                                      </section>
                               </main>
                               <footer>
                                 <div class="flex pt-2 bg">
