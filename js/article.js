@@ -90,16 +90,17 @@ function displayArticle(article){
           for (b = 0; b < articlesEnregistres.lstArticles.length; b++){
            panierProduit = panierProduit + `
           <tr class="flex justify-content">
-             <th class="flex">${articlesEnregistres.lstArticles[b].article.name}</th >
-             <th  class="flex">${articlesEnregistres.lstArticles[b].color}</th >
-             <th class="flex">${articlesEnregistres.lstArticles[b].quantite} </th>
-             <th id="prixarticle" class="flex" value="">${articlesEnregistres.lstArticles[b].article.price/100}</th > 
-             <th id="prixArticles" class="flex">${articlesEnregistres.lstArticles[b].quantite*(articlesEnregistres.lstArticles[b].article.price/100)} €</th >
+             <th class="flex">${articlesEnregistres.lstArticles[b].article.name};</th >
+             <th  class="flex">${articlesEnregistres.lstArticles[b].color};</th >
+             <th class="flex">${articlesEnregistres.lstArticles[b].quantite};</th>
+             <th id="prixarticle" class="flex" value="">${articlesEnregistres.lstArticles[b].article.price/100};</th > 
+             <th id="prixArticles" class="flex">${articlesEnregistres.lstArticles[b].quantite*(articlesEnregistres.lstArticles[b].article.price/100)}€</th >
+             <th><button id="btnSupprime" class="flex">delete</button><th>
           </tr>`;  
           }
              if(b == articlesEnregistres.lstArticles.length){
                 listeArticle.innerHTML = panierProduit;
-             }       
+           }       
 }
  let totalPanier = document.getElementById("totalprix");
              totalPanier.innerHTML = `
@@ -120,4 +121,41 @@ function displayArticle(article){
   }
  
 
- 
+  let listeArticle = document.getElementById("listearticle");
+  let articlesEnregistres = JSON.parse(localStorage.getItem("article"));
+  if(articlesEnregistres.lstArticles === null){
+     let panierVide = `
+     <p> le panier est vide</p>`;
+     listeArticle.innerHTML = panierVide;
+  }else{
+        let panierProduit = [];
+        for (b = 0; b < articlesEnregistres.lstArticles.length; b++){
+         panierProduit = panierProduit + `
+        <tr class="flex justify-content">
+           <th class="flex">${articlesEnregistres.lstArticles[b].article.name};</th >
+           <th  class="flex">${articlesEnregistres.lstArticles[b].color};</th >
+           <th class="flex">${articlesEnregistres.lstArticles[b].quantite};</th>
+           <th id="prixarticle" class="flex" value="">${articlesEnregistres.lstArticles[b].article.price/100};</th > 
+           <th id="prixArticles" class="flex">${articlesEnregistres.lstArticles[b].quantite*(articlesEnregistres.lstArticles[b].article.price/100)}€</th>
+           <th><button id="btnSupprime" class="flex">delete</button><th>
+        </tr>`;  
+        }
+           if(b == articlesEnregistres.lstArticles.length){
+              listeArticle.innerHTML = panierProduit;
+           }       
+}
+let totalPanier = document.getElementById("totalprix");
+           totalPanier.innerHTML = `
+           <p>le prix total est de <strong>${articlesEnregistres.PriceTotal}€<strong></p>`;  
+
+// lien entre le bouton supprime et la supression d'un article // 
+let btnSupprime = document.querySelector("#btnSupprime");
+
+for (let p = 0; p < btnSupprime.length; p++) {
+  btnSupprime[p].addEventListener("click", Event =>{
+    event.preventDefault();
+    let selectionProduit = articlesEnregistres.lstArticles[p];
+
+  })
+  
+}

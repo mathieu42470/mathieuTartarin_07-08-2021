@@ -126,6 +126,12 @@ th{
 .end{
     justify-content: end;
 }
+.position{
+    position: absolute;
+}
+.color{
+    color: red;
+}
 @media (min-width: 100px) and (max-width: 600px){
     .flex{
          display: flex;
@@ -135,6 +141,9 @@ th{
      }
      .column{
          flex-direction: column;
+     }
+     .position{
+         position: normal;
      }
      
 }

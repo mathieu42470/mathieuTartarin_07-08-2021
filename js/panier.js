@@ -1,27 +1,27 @@
 // récuperation du local storage//
-   let articlesEnregistres = JSON.parse(localStorage.getItem("article"));
+   let articlesEnregistre = JSON.parse(localStorage.getItem("article"));
  
 
 // mise en place panier//
     let listeArticle = document.getElementById("listearticle");
 
-    if(articlesEnregistres === null){
+    if(articlesEnregistre === null){
        let panierVide = `
        <p> le panier est vide</p>`;
        listeArticle.innerHTML = panierVide;
     }else{
           let panierProduit = [];
-          for (a = 0; a < articlesEnregistres.lstArticles.length; a++){
+          for (a = 0; a < articlesEnregistre.lstArticles.length; a++){
            panierProduit = panierProduit + `
           <tr class="flex justify-content">
-             <th class="flex">${articlesEnregistres.lstArticles[a].article.name}</th >
-             <th  class="flex">${articlesEnregistres.lstArticles[a].color}</th >
-             <th class="flex">${articlesEnregistres.lstArticles[a].quantite} </th>
-             <th id="prixarticle" class="flex" value="">${articlesEnregistres.lstArticles[a].article.price/100}</th > 
-             <th id="prixArticles" class="flex">${articlesEnregistres.lstArticles[a].quantite*(articlesEnregistres.lstArticles[a].article.price/100)} €</th >
+             <th class="flex">${articlesEnregistre.lstArticles[a].article.name}</th >
+             <th  class="flex">${articlesEnregistre.lstArticles[a].color}</th >
+             <th class="flex">${articlesEnregistre.lstArticles[a].quantite} </th>
+             <th id="prixarticle" class="flex" value="">${articlesEnregistre.lstArticles[a].article.price/100}</th > 
+             <th id="prixArticles" class="flex">${articlesEnregistre.lstArticles[a].quantite*(articlesEnregistre.lstArticles[a].article.price/100)} €</th >
           </tr>`;  
           }
-             if(a == articlesEnregistres.lstArticles.length){
+             if(a == articlesEnregistre.lstArticles.length){
                 listeArticle.innerHTML = panierProduit;
              }       
 }
@@ -29,7 +29,7 @@
        
  let totalPanier = document.getElementById("totalprix");
              totalPanier.innerHTML = `
-             <p>le prix total est de <strong>${articlesEnregistres.PriceTotal}€<strong></p>`;  
+             <p>le prix total est de <strong>${articlesEnregistre.PriceTotal}€<strong></p>`;  
 
 
 
