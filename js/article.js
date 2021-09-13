@@ -78,7 +78,7 @@ function displayArticle(article){
     localStorage.setItem("article", JSON.stringify(articlesEnregistres));
 
 
-    // creation d'un mini panier pour voir ce qu'il y a dedans en directet pouvoir supprimer des données//
+    // creation d'un mini panier pour voir ce qu'il y a dedans en direct //
     let listeArticle = document.getElementById("listearticle");
 
     if(articlesEnregistres.lstArticles === null){
@@ -95,7 +95,6 @@ function displayArticle(article){
              <th class="flex">${articlesEnregistres.lstArticles[b].quantite};</th>
              <th id="prixarticle" class="flex" value="">${articlesEnregistres.lstArticles[b].article.price/100};</th > 
              <th id="prixArticles" class="flex">${articlesEnregistres.lstArticles[b].quantite*(articlesEnregistres.lstArticles[b].article.price/100)}€</th >
-             <th><button id="btnSupprime" class="flex">delete</button><th>
           </tr>`;  
           }
              if(b == articlesEnregistres.lstArticles.length){
@@ -112,9 +111,6 @@ function displayArticle(article){
     
    let PriceTotal = 0;
     for(var i = 0; i<lstArticles.length;i++){
-      // console.log("quantite art "+lstArticles[i].quantite);
-      // console.log("price art"+lstArticles[i].price/100);
-      // console.log(lstArticles[i]);
       PriceTotal = lstArticles[i].quantite*(lstArticles[i].article.price/100) + PriceTotal;
     }
     return PriceTotal;
@@ -135,9 +131,8 @@ function displayArticle(article){
            <th class="flex">${articlesEnregistres.lstArticles[b].article.name};</th >
            <th  class="flex">${articlesEnregistres.lstArticles[b].color};</th >
            <th class="flex">${articlesEnregistres.lstArticles[b].quantite};</th>
-           <th id="prixarticle" class="flex" value="">${articlesEnregistres.lstArticles[b].article.price/100};</th > 
+           <th id="prixarticle" class="flex" value="">${articlesEnregistres.lstArticles[b].article.price/100}€</th > 
            <th id="prixArticles" class="flex">${articlesEnregistres.lstArticles[b].quantite*(articlesEnregistres.lstArticles[b].article.price/100)}€</th>
-           <th><button id="btnSupprime" class="flex">delete</button><th>
         </tr>`;  
         }
            if(b == articlesEnregistres.lstArticles.length){
@@ -147,15 +142,3 @@ function displayArticle(article){
 let totalPanier = document.getElementById("totalprix");
            totalPanier.innerHTML = `
            <p>le prix total est de <strong>${articlesEnregistres.PriceTotal}€<strong></p>`;  
-
-// lien entre le bouton supprime et la supression d'un article // 
-let btnSupprime = document.querySelector("#btnSupprime");
-
-for (let p = 0; p < btnSupprime.length; p++) {
-  btnSupprime[p].addEventListener("click", Event =>{
-    event.preventDefault();
-    let selectionProduit = articlesEnregistres.lstArticles[p];
-
-  })
-  
-}

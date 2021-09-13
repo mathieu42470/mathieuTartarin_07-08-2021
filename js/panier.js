@@ -26,10 +26,11 @@
              }       
 }
 
-       
+ // articlesEnregistre = JSON.stringify(localStorage.getItem("article"));        
  let totalPanier = document.getElementById("totalprix");
              totalPanier.innerHTML = `
-             <p>le prix total est de <strong>${articlesEnregistre.PriceTotal}€<strong></p>`;  
+             <p>le prix total est de <strong>${articlesEnregistre.PriceTotal}€<strong></p>`;
+
 
 
 
@@ -182,20 +183,22 @@ let donneAEnvoyer ={
    articlesEnregistres,
    coordonnes,
 };
+console.log("donneAEnvoyer");
+console.log(donneAEnvoyer);
 
-fetch("http://localhost:3000/api/order", {
+fetch("localhost:3000/api/teddies/order", {
    method: "POST",
-   body: JSON.stringify(donneAEnvoyer),
    headers: {
+      'Accept': 'application/json',
       "Content-Type": "application/json",
    },
-}).then(async(Response)=>{
-   try{
-       let contenu = await Response.json();
-       console.log("contenu");
-       console.log(contenu);
-   }catch(e){
-       console.log(e);
-   }
+   body: JSON.stringify(donneAEnvoyer),
 })
+   .then(function (res){
+      if (res.ok){
+         return res.json();
+      }
+   })
 })
+
+ 

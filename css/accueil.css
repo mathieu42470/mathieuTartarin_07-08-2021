@@ -130,7 +130,7 @@ th{
     position: absolute;
 }
 .color{
-    color: red;
+    color:#6f42c1;
 }
 @media (min-width: 100px) and (max-width: 600px){
     .flex{
