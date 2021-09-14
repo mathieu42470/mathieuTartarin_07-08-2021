@@ -26,13 +26,12 @@
              }       
 }
 
+  // articlesEnregistre = JSON.stringify(localStorage.getItem("article"));        
  // articlesEnregistre = JSON.stringify(localStorage.getItem("article"));        
+  // articlesEnregistre = JSON.stringify(localStorage.getItem("article"));        
  let totalPanier = document.getElementById("totalprix");
              totalPanier.innerHTML = `
              <p>le prix total est de <strong>${articlesEnregistre.PriceTotal}€<strong></p>`;
-
-
-
 
 
 //formulaire //
@@ -66,16 +65,17 @@
              <div class="flex direction">
                 <label class="label" for="ville">ville</label>
                 <input id="ville" class="input" type="text" name="ville"/>
-             </div>
+             </div>             
              </div>
              <input id="bouton" type="submit" class="mt"></input>
         </form>   
-   `
+   `;
 
 let boutonCommande = document.querySelector("#bouton");
 //bouton commande ecoute du click//
-boutonCommande.addEventListener("click", ()=>{
-   
+boutonCommande.addEventListener("click", (e) => {
+   e.preventDefault();
+   // création du tableau coordones //
 let coordonnes = {
   prenom : document.querySelector("#prenom").value,
   nom : document.querySelector("#nom").value,
@@ -179,26 +179,21 @@ localStorage.setItem("coordonnes", JSON.stringify(coordonnes));
 }
 
 // utilisation de fetch pour avoir un id lié a la commande //
-let donneAEnvoyer ={
-   articlesEnregistres,
-   coordonnes,
+ let donneAEnvoyer = {
+   articles : articlesEnregistre,
+   coordonnes: coordonnes,
 };
 console.log("donneAEnvoyer");
 console.log(donneAEnvoyer);
-
-fetch("localhost:3000/api/teddies/order", {
-   method: "POST",
-   headers: {
-      'Accept': 'application/json',
-      "Content-Type": "application/json",
+    fetch("http://localhost:3000/api/teddies/order", {
+       method: "POST",           
+       headers: {
+       "Accept": "application/json",
+       "Content-Type": "application/json"
    },
-   body: JSON.stringify(donneAEnvoyer),
+    body: JSON.stringify(donneAEnvoyer)
+       })
+       .then( response => (response.json()))
+       
+       
 })
-   .then(function (res){
-      if (res.ok){
-         return res.json();
-      }
-   })
-})
-
- 

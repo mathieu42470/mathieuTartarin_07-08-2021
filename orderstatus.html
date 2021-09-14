@@ -6,6 +6,7 @@
                 <meta name="description" content="site de e-commerce pour vos peluches">
                 <title>Orinoco, site de e-commerce pour vos peluches</title>
                 <link rel="stylesheet" href="css/accueil.css"/>
+                <script src="js/orderstatus.js" defer></script>
         </head>
         <body>
                 <div class="container bg-1">
@@ -20,9 +21,10 @@
                                               </nav>
                                </header>
                                <main>
-                                         <div class="my-2">
-                                                        <p class="fs-2 ">Félicitation, votre commande a bien été enregistrée</p>
-                                         </div>
+                                         <div id="remerciement" class="my-2"></div>
+                                         <div id="produit" class="my-2"> </div>
+                                         <div id="totalproduit" class="my-2"></div>
+                                         <div id="adresse" class="my-2"></div>
                                </main>
                                <footer>
                                              <div class="flex pt-2 bg">
