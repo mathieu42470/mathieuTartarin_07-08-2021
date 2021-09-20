@@ -1,11 +1,12 @@
 // récupération du local storage //
 let articlesEnregistres = JSON.parse(localStorage.getItem("article"));
 let coordonnees = JSON.parse(localStorage.getItem("coordonnes"));
+// let numeroCommande = JSON.parse(localStorage.getItem("responseid"))
 
 let remerciement = document.getElementById("remerciement");
 remerciement.innerHTML = `
 <p class="fs-2 ">Félicitation, votre commande a bien été enregistrée</p>
-<p> Votre numéro de commande est </p>
+ <p> Votre numéro de commande est  </p>
 ` 
 let produit = document.getElementById("produit");
 let panierProduit = [];
@@ -31,6 +32,6 @@ let panierProduit = [];
 
  let adresse = document.getElementById("adresse");
  adresse.innerHTML = `
- <p> Les articles commandés arriveront chez <strong> ${coordonnees.nom} ${coordonnees.prenom}</strong></p>
- <p>l'adresse de livraison : <strong> ${coordonnees.adresse}</strong> à <strong>${coordonnees.ville}<strong></p>
+ <p> Les articles commandés arriveront chez <strong> ${coordonnees.firstName} ${coordonnees.lastName}</strong></p>
+ <p>l'adresse de livraison : <strong> ${coordonnees.address}</strong> à <strong>${coordonnees.city}<strong></p>
  `

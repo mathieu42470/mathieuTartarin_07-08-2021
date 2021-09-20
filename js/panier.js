@@ -1,5 +1,5 @@
 // récuperation du local storage//
-   let articlesEnregistre = JSON.parse(localStorage.getItem("article"));
+    let articlesEnregistre = JSON.parse(localStorage.getItem("article"));
  
 
 // mise en place panier//
@@ -26,9 +26,8 @@
              }       
 }
 
-  // articlesEnregistre = JSON.stringify(localStorage.getItem("article"));        
- // articlesEnregistre = JSON.stringify(localStorage.getItem("article"));        
-  // articlesEnregistre = JSON.stringify(localStorage.getItem("article"));        
+         
+//  articlesEnregistre = JSON.stringify(localStorage.getItem("article"));        
  let totalPanier = document.getElementById("totalprix");
              totalPanier.innerHTML = `
              <p>le prix total est de <strong>${articlesEnregistre.PriceTotal}€<strong></p>`;
@@ -59,10 +58,6 @@
                 <input id="adresse" class="input" type="text" name="adresse"/>
              </div>
              <div class="flex direction">
-                <label class="label" for="codePostal">Code postal</label>
-                <input id="codepostal" class="input" type="number" name="codePostal"/>
-             </div>
-             <div class="flex direction">
                 <label class="label" for="ville">ville</label>
                 <input id="ville" class="input" type="text" name="ville"/>
              </div>             
@@ -70,27 +65,23 @@
              <input id="bouton" type="submit" class="mt"></input>
         </form>   
    `;
-
+   
+  
 let boutonCommande = document.querySelector("#bouton");
 //bouton commande ecoute du click//
 boutonCommande.addEventListener("click", (e) => {
    e.preventDefault();
-   // création du tableau coordones //
-let coordonnes = {
-  prenom : document.querySelector("#prenom").value,
-  nom : document.querySelector("#nom").value,
-  mail : document.querySelector("#mail").value,
-  adresse : document.querySelector("#adresse").value,
-  codepostal : document.querySelector("#codepostal").value,
-  ville: document.querySelector("#ville").value 
-} 
+   // création du tableau contact //
+let contact = {
+  firstName : document.querySelector("#prenom").value,
+  lastName : document.querySelector("#nom").value,
+  address : document.querySelector("#adresse").value,
+  city : document.querySelector("#ville").value,
+  email : document.querySelector("#mail").value,
+ }  
 
 let regExPrenom = (value) => {
     return /^[A-Za-z/-]{3,20}$/.test(value);
-}
-
-let regExCodePostal = (value) => {
-   return /^[0-9]{5}$/.test(value);
 }
 
 let regExMail = (value) =>{
@@ -107,7 +98,7 @@ let textAlert = (value) =>{
 
 // condition pour le prénom
 function prenomControle(){
-let prenom = coordonnes.prenom;
+let prenom = contact.firstName;
 if (regExPrenom(prenom)){
    return true;
 }else{
@@ -118,7 +109,7 @@ if (regExPrenom(prenom)){
 
 //condition pour le nom
 function nomControle(){
-   let nom = coordonnes.nom;
+   let nom = contact.lastName;
    if (regExPrenom(nom)){
       return true;
    }else{
@@ -129,7 +120,7 @@ function nomControle(){
 
 //condition pour la ville
 function villeControle(){
-   let ville = coordonnes.ville;
+   let ville = contact.city;
    if (regExPrenom(ville)){
       return true;
    }else{
@@ -138,20 +129,9 @@ function villeControle(){
    }
 }
 
-//condition pour le code postal
-function codePostalControle(){
-   let codePostal = coordonnes.codepostal;
-   if (regExCodePostal(codePostal)){
-      return true;
-   }else{
-      alert("le code postal doit etre de 5 chiffres uniquement");
-      return false;
-   }
-}
-
 // condition pour l'adresse
 function adresseControle(){
-   let adresse = coordonnes.adresse;
+   let adresse = contact.address;
    if (regExAdresse(adresse)){
       return true;
    }else{
@@ -162,7 +142,7 @@ function adresseControle(){
 
 //condition pour le mail
 function mailControle(){
-   let mail = coordonnes.mail;
+   let mail = contact.email;
    if (regExMail(mail)){
       return true;
    }else{
@@ -172,28 +152,37 @@ function mailControle(){
 }
 
 // envoi du formulaire dans le local storage 
-if(prenomControle() && nomControle() && villeControle() && codePostalControle() && mailControle() && adresseControle()) {
-localStorage.setItem("coordonnes", JSON.stringify(coordonnes));
+if(prenomControle() && nomControle() && adresseControle() && villeControle() && mailControle() ) {
+localStorage.setItem("coordonnes", JSON.stringify(contact));
 }else{
    alert("merci de bien remplir le formulaire");
 }
 
 // utilisation de fetch pour avoir un id lié a la commande //
- let donneAEnvoyer = {
-   articles : articlesEnregistre,
-   coordonnes: coordonnes,
-};
-console.log("donneAEnvoyer");
-console.log(donneAEnvoyer);
-    fetch("http://localhost:3000/api/teddies/order", {
+ products = [];
+ for (let i = 0; i < articlesEnregistre.lstArticles.length; i++) {
+    let product = articlesEnregistre.lstArticles[i].article;
+   products.push(product);
+ 
+ }
+console.log("contact");
+ console.log(contact);
+ console.log("products");
+ console.log(products)
+
+    fetch("http://localhost:3000/api/teddies/order/", {
        method: "POST",           
        headers: {
        "Accept": "application/json",
        "Content-Type": "application/json"
    },
-    body: JSON.stringify(donneAEnvoyer)
+    body: JSON.stringify(contact, products)
        })
-       .then( response => (response.json()))
-       
-       
+       .then( response => response.json()).then(orderId => {
+          console.log("orderId");
+          console.log(orderId);
+          localStorage.setItem('responseid', orderId);
+       })
+        document.location.href = "orderstatus.html";
+ 
 })
