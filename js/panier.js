@@ -33,7 +33,7 @@
              <p>le prix total est de <strong>${articlesEnregistre.PriceTotal}€<strong></p>`;
 
 
-//formulaire //
+// mise en place du formulaire //
    let formulaire = document.getElementById("formulaire");
    formulaire.innerHTML= `
    <h2>vos coordonnées</h2>
@@ -161,14 +161,11 @@ localStorage.setItem("coordonnes", JSON.stringify(contact));
 // utilisation de fetch pour avoir un id lié a la commande //
  products = [];
  for (let i = 0; i < articlesEnregistre.lstArticles.length; i++) {
-    let product = articlesEnregistre.lstArticles[i].article;
+    let product = articlesEnregistre.lstArticles[i].article._id;
    products.push(product);
  
  }
-console.log("contact");
- console.log(contact);
- console.log("products");
- console.log(products)
+ console.log(products);
 
     fetch("http://localhost:3000/api/teddies/order/", {
        method: "POST",           
@@ -176,13 +173,15 @@ console.log("contact");
        "Accept": "application/json",
        "Content-Type": "application/json"
    },
-    body: JSON.stringify(contact, products)
+    body: JSON.stringify({products,contact})
        })
        .then( response => response.json()).then(orderId => {
-          console.log("orderId");
-          console.log(orderId);
-          localStorage.setItem('responseid', orderId);
+         //  console.log("orderId");
+       
+          localStorage.setItem('responseid', JSON.stringify(orderId));
+          document.location.href = "orderstatus.html";
        })
-        document.location.href = "orderstatus.html";
+       
  
+   
 })

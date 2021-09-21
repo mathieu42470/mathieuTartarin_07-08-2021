@@ -1,12 +1,12 @@
 // récupération du local storage //
 let articlesEnregistres = JSON.parse(localStorage.getItem("article"));
 let coordonnees = JSON.parse(localStorage.getItem("coordonnes"));
-// let numeroCommande = JSON.parse(localStorage.getItem("responseid"))
+ let numeroCommande = JSON.parse(localStorage.getItem("responseid"));
 
 let remerciement = document.getElementById("remerciement");
 remerciement.innerHTML = `
 <p class="fs-2 ">Félicitation, votre commande a bien été enregistrée</p>
- <p> Votre numéro de commande est  </p>
+ <p> Votre numéro de commande est  ${numeroCommande.orderId}</p>
 ` 
 let produit = document.getElementById("produit");
 let panierProduit = [];
@@ -35,3 +35,5 @@ let panierProduit = [];
  <p> Les articles commandés arriveront chez <strong> ${coordonnees.firstName} ${coordonnees.lastName}</strong></p>
  <p>l'adresse de livraison : <strong> ${coordonnees.address}</strong> à <strong>${coordonnees.city}<strong></p>
  `
+
+ //supprimer l'ensemble du localstorage
