@@ -25,9 +25,7 @@
                 listeArticle.innerHTML = panierProduit;
              }       
 }
-
-         
-//  articlesEnregistre = JSON.stringify(localStorage.getItem("article"));        
+// mise en place prix total //  
  let totalPanier = document.getElementById("totalprix");
              totalPanier.innerHTML = `
              <p>le prix total est de <strong>${articlesEnregistre.PriceTotal}€<strong></p>`;
@@ -79,7 +77,7 @@ let contact = {
   city : document.querySelector("#ville").value,
   email : document.querySelector("#mail").value,
  }  
-
+// variable pour les conditions //
 let regExPrenom = (value) => {
     return /^[A-Za-z/-]{3,20}$/.test(value);
 }
@@ -162,11 +160,8 @@ localStorage.setItem("coordonnes", JSON.stringify(contact));
  products = [];
  for (let i = 0; i < articlesEnregistre.lstArticles.length; i++) {
     let product = articlesEnregistre.lstArticles[i].article._id;
-   products.push(product);
- 
+   products.push(product); 
  }
- console.log(products);
-
     fetch("http://localhost:3000/api/teddies/order/", {
        method: "POST",           
        headers: {
@@ -175,13 +170,8 @@ localStorage.setItem("coordonnes", JSON.stringify(contact));
    },
     body: JSON.stringify({products,contact})
        })
-       .then( response => response.json()).then(orderId => {
-         //  console.log("orderId");
-       
+       .then( response => response.json()).then(orderId => {       
           localStorage.setItem('responseid', JSON.stringify(orderId));
-          document.location.href = "orderstatus.html";
-       })
-       
- 
-   
+           document.location.href = "orderstatus.html";
+       })       
 })

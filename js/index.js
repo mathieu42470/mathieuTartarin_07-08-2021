@@ -6,7 +6,6 @@ async function main(){
                  displayArticle(product);
   }
 }
-
             
 // recuperation des articles de nounours //
 function getArticles() {
@@ -21,7 +20,6 @@ function getArticles() {
                               alert(error)
                })
               }
-
 
 // mise en page des articles //
  function displayArticle(product){   

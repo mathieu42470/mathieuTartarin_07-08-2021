@@ -119,7 +119,7 @@ function displayArticle(article){
 
   let listeArticle = document.getElementById("listearticle");
   let articlesEnregistres = JSON.parse(localStorage.getItem("article"));
-  if(articlesEnregistres.lstArticles === null){
+  if(articlesEnregistres === null){
      let panierVide = `
      <p> le panier est vide</p>`;
      listeArticle.innerHTML = panierVide;
@@ -140,5 +140,6 @@ function displayArticle(article){
            }       
 }
 let totalPanier = document.getElementById("totalprix");
-           totalPanier.innerHTML = `
-           <p>le prix total est de <strong>${articlesEnregistres.PriceTotal}€<strong></p>`;  
+     totalPanier.innerHTML = `
+        <p>le prix total est de <strong>${articlesEnregistres.PriceTotal}€<strong></p>
+  `;  

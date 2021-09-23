@@ -3,11 +3,14 @@ let articlesEnregistres = JSON.parse(localStorage.getItem("article"));
 let coordonnees = JSON.parse(localStorage.getItem("coordonnes"));
  let numeroCommande = JSON.parse(localStorage.getItem("responseid"));
 
+// remerciement et numéro de commande //
 let remerciement = document.getElementById("remerciement");
 remerciement.innerHTML = `
 <p class="fs-2 ">Félicitation, votre commande a bien été enregistrée</p>
  <p> Votre numéro de commande est  ${numeroCommande.orderId}</p>
 ` 
+
+// rappelle de la commande avec le prix total  //
 let produit = document.getElementById("produit");
 let panierProduit = [];
     for (v = 0; v < articlesEnregistres.lstArticles.length; v++){
@@ -29,11 +32,12 @@ let panierProduit = [];
              <p>le prix total est de <strong>${articlesEnregistres.PriceTotal}€<strong></p>
              `;
 
-
+// rappelle de l'adresse de livraison//
  let adresse = document.getElementById("adresse");
  adresse.innerHTML = `
  <p> Les articles commandés arriveront chez <strong> ${coordonnees.firstName} ${coordonnees.lastName}</strong></p>
  <p>l'adresse de livraison : <strong> ${coordonnees.address}</strong> à <strong>${coordonnees.city}<strong></p>
  `
 
- //supprimer l'ensemble du localstorage
+ //supprimer l'ensemble du localstorage //
+ localStorage.clear ();
