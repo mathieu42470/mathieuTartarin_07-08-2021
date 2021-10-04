@@ -1,5 +1,75 @@
 .container{
                width: 100%;
+               background-color: white;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f3e9f1;
+    margin-top: 10px;
+}
+.imagelogo{
+    height: 70px;  
+    background-color: #f3e9f1; 
+    margin-left: 10px;
+}
+.lienpanier{
+    display: flex;
+}
+.panier{
+    list-style-type: none;
+}
+.image{
+    height: 15rem;
+    width: 100%;
+    object-fit: cover;
+    display: flex;
+    border-radius: 20px;
+}
+.produitlist{
+    display: flex;
+    border-radius: 20px;
+    margin-top: 5%;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #f3e9f1; 
+}
+.footer{
+    display: flex;
+    margin-top: 10px;
+    background-color: #f3e9f1;
+}
+.accueil{
+    font-size: 20px;
+    margin-left: 10px;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+}
+.produitlist{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.carte{
+    margin: 10px;
+    border-radius: 20px;
+}
+.nomproduit{
+    border-radius: 20px;
+}
+.panier{
+    display: flex;
+    border-radius: 20px;
+    align-items: center;
+}
+.petitpanier{
+    color:#6f42c1;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-self: flex-end;
 }
 .bg-1{
     background-color: white;
@@ -12,6 +82,9 @@
 }
 .flex{
                display: flex;
+}
+td{
+    text-align: center;
 }
 .mt{
     margin-top: 10px;
@@ -139,7 +212,11 @@ th{
      .direction{
          flex-direction: column;
      }
-     .column{
+     .image{
+         object-fit: cover;
+     }
+     .produitlist{
+         display: flex;
          flex-direction: column;
      }
      .position{

@@ -13,12 +13,12 @@
           let panierProduit = [];
           for (a = 0; a < articlesEnregistre.lstArticles.length; a++){
            panierProduit = panierProduit + `
-          <tr class="flex justify-content">
-             <th class="flex">${articlesEnregistre.lstArticles[a].article.name}</th >
-             <th  class="flex">${articlesEnregistre.lstArticles[a].color}</th >
-             <th class="flex">${articlesEnregistre.lstArticles[a].quantite} </th>
-             <th id="prixarticle" class="flex" value="">${articlesEnregistre.lstArticles[a].article.price/100}</th > 
-             <th id="prixArticles" class="flex">${articlesEnregistre.lstArticles[a].quantite*(articlesEnregistre.lstArticles[a].article.price/100)} €</th >
+          <tr>
+             <td >${articlesEnregistre.lstArticles[a].article.name}</td>
+             <td >${articlesEnregistre.lstArticles[a].color}</td >
+             <td >${articlesEnregistre.lstArticles[a].quantite} </td>
+             <td id="prixarticle"  value="">${articlesEnregistre.lstArticles[a].article.price/100}</td > 
+             <td id="prixArticles" >${articlesEnregistre.lstArticles[a].quantite*(articlesEnregistre.lstArticles[a].article.price/100)} €</td >
           </tr>`;  
           }
              if(a == articlesEnregistre.lstArticles.length){
@@ -102,9 +102,7 @@ if (regExPrenom(prenom)){
 }else{
    alert(textAlert("le Prénom"));
    return false;
-}
-}
-
+}}
 //condition pour le nom
 function nomControle(){
    let nom = contact.lastName;
@@ -113,9 +111,7 @@ function nomControle(){
    }else{
       alert(textAlert("le Nom"));
       return false;
-   }
-}
-
+   }}
 //condition pour la ville
 function villeControle(){
    let ville = contact.city;
@@ -124,9 +120,7 @@ function villeControle(){
    }else{
       alert(textAlert("la ville"));
       return false;
-   }
-}
-
+   }}
 // condition pour l'adresse
 function adresseControle(){
    let adresse = contact.address;
@@ -135,9 +129,7 @@ function adresseControle(){
    }else{
       alert(textAlert("l'adresse doit contenir uniquement des chiffres et des lettres"));
       return false;
-   }
-   }
-
+   }}
 //condition pour le mail
 function mailControle(){
    let mail = contact.email;
@@ -146,15 +138,10 @@ function mailControle(){
    }else{
       alert("le mail n'est pas valide");
       return false;
-   }
-}
-
+   }}
 // envoi du formulaire dans le local storage 
 if(prenomControle() && nomControle() && adresseControle() && villeControle() && mailControle() ) {
 localStorage.setItem("coordonnes", JSON.stringify(contact));
-}else{
-   alert("merci de bien remplir le formulaire");
-}
 
 // utilisation de fetch pour avoir un id lié a la commande //
  products = [];
@@ -174,4 +161,7 @@ localStorage.setItem("coordonnes", JSON.stringify(contact));
           localStorage.setItem('responseid', JSON.stringify(orderId));
            document.location.href = "orderstatus.html";
        })       
+}else{
+   alert("merci de bien remplir le formulaire");
+}     
 })

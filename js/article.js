@@ -9,11 +9,10 @@ function main(){
   }
 
 
-
 // recuperation des articles de nounours //
 function getArticle(articleId) {
                 fetch(`http://localhost:3000/api/teddies/${articleId}`)
-                            .then(response =>(response.json()))
+                            .then(response =>{response.json()})
                             .then(article =>{
                               //selection de la couleur//
                               displayArticle(article);
@@ -22,7 +21,6 @@ function getArticle(articleId) {
                                  option.textContent = color;
                                  document.getElementById('nomproduit').appendChild(option);
                                });
-
                             })
                             .catch(error => {
                                            alert("une erreur est survenue"+error)
@@ -90,17 +88,15 @@ function displayArticle(article){
           for (b = 0; b < articlesEnregistres.lstArticles.length; b++){
            panierProduit = panierProduit + `
           <tr class="flex justify-content">
-             <th class="flex">${articlesEnregistres.lstArticles[b].article.name};</th >
-             <th  class="flex">${articlesEnregistres.lstArticles[b].color};</th >
-             <th class="flex">${articlesEnregistres.lstArticles[b].quantite};</th>
-             <th id="prixarticle" class="flex" value="">${articlesEnregistres.lstArticles[b].article.price/100};</th > 
-             <th id="prixArticles" class="flex">${articlesEnregistres.lstArticles[b].quantite*(articlesEnregistres.lstArticles[b].article.price/100)}€</th >
+             <td class="flex">${articlesEnregistres.lstArticles[b].article.name}</td >
+             <td class="flex">${articlesEnregistres.lstArticles[b].quantite}</td>
+             <td id="prixarticle" class="flex" value="">${articlesEnregistres.lstArticles[b].article.price/100}</td > 
           </tr>`;  
           }
              if(b == articlesEnregistres.lstArticles.length){
                 listeArticle.innerHTML = panierProduit;
            }       
-}
+         }
  let totalPanier = document.getElementById("totalprix");
              totalPanier.innerHTML = `
              <p>le prix total est de <strong>${articlesEnregistres.PriceTotal}€<strong></p>`;  
@@ -127,12 +123,11 @@ function displayArticle(article){
         let panierProduit = [];
         for (b = 0; b < articlesEnregistres.lstArticles.length; b++){
          panierProduit = panierProduit + `
-        <tr class="flex justify-content">
-           <th class="flex">${articlesEnregistres.lstArticles[b].article.name};</th >
-           <th  class="flex">${articlesEnregistres.lstArticles[b].color};</th >
-           <th class="flex">${articlesEnregistres.lstArticles[b].quantite};</th>
-           <th id="prixarticle" class="flex" value="">${articlesEnregistres.lstArticles[b].article.price/100}€</th > 
-           <th id="prixArticles" class="flex">${articlesEnregistres.lstArticles[b].quantite*(articlesEnregistres.lstArticles[b].article.price/100)}€</th>
+        <tr>
+           <td >${articlesEnregistres.lstArticles[b].article.name};</td >         
+           <td >${articlesEnregistres.lstArticles[b].quantite};</td>
+           <td id="prixarticle"  value="">${articlesEnregistres.lstArticles[b].article.price/100}€</td > 
+           
         </tr>`;  
         }
            if(b == articlesEnregistres.lstArticles.length){
@@ -141,5 +136,5 @@ function displayArticle(article){
 }
 let totalPanier = document.getElementById("totalprix");
      totalPanier.innerHTML = `
-        <p>le prix total est de <strong>${articlesEnregistres.PriceTotal}€<strong></p>
+        <p>total :<strong>${articlesEnregistres.PriceTotal}€<strong></p>
   `;  

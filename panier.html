@@ -12,22 +12,28 @@
         </head>
         <body>
                 <div class="container bg-1">
-                               <header class="flex justify-content items-center rounded-lg w-full bg py-2 px-6 mt">
-                                              <a href="index.html">
-                                                      <p><img class="h-20 ml-1 bg" src="images/logo.jpg" alt="logo de l'entreprise Orinoco"></p>
-                                              </a>
-                                              <nav class="flex">
-                                                      <ul class="list-none font-bold">
-                                                                     <a class="px-4 py-4" href="panier.html">Panier</a>
-                                                      </ul>
-                                              </nav>
-                               </header>
+                        <header class="header rounded-lg w-full py-2 px-6">
+                                <a href="index.html">
+                                        <p><img id="imgNorbert" class="imagelogo" src="images/logo.jpg" alt="logo de l'entreprise Orinoco"></p>
+                                </a>
+                                <nav class="lienpanier">
+                                        <ul class="panier font-bold">
+                                                       <a class="px-4 py-4" href="panier.html">Panier</a>
+                                        </ul>
+                                </nav>
+                 </header>
                                <main>
-                                         <section class="bg mt flex direction">
-                                                 <table id="articlecommande" class="container ml-1">
+                                         <section class="container">
+                                                 <table id="articlecommande" class="table">
                                                          <h2 id="h2">votre commande</h2>
-                                                         <thead>
-                                                           <tr class="flex justify-content"><th>Produit</th><th>couleur</th><th>Quantité</th> <th>Prix</th><th>total</th></tr>   
+                                                         <thead class="thead-light">
+                                                                 <tr >
+                                                                   <th>Produit</th>
+                                                                   <th>couleur</th>
+                                                                   <th>Quantité</th>
+                                                                   <th>Prix</th>
+                                                                   <th>total</th>
+                                                                </tr>   
                                                          </thead>
                                                          <tbody id="listearticle">
                                                                 <tr class="flex justify-content"></tr> 
@@ -40,14 +46,11 @@
                                          </section>
                                </main>
                                <footer>
-                                <div class="flex pt-2 bg">
-                                        <p><a class="ml-1 fs-1" href="panier.html">Haut de la page</a> </p>
+                                <div class="footer">
+                                        <p><a class="accueil" href="index.html">Accueil</a> </p>
                                 </div>
                         </footer>
                 </div>
         </body>
         <script src="js/panier.js" defer></script>
 </html>
-
-<!-- 
-<th id="name"></th><th id="color"></th><th id="select"></th> <th id="price"></th><th id="total"></th> -->

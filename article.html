@@ -11,33 +11,36 @@
         </head>
         <body>
                <div class="container bg-1">
-                              <header class="flex justify-content items-center rounded-lg w-full bg py-2 px-6 mt">
-                                             <a href="index.html">
-                                                     <p><img id="imgNorbert" class="h-20 ml-1 bg" src="images/logo.jpg" alt="logo de l'entreprise Orinoco"></p>
-                                             </a>
-                                             <nav class="flex">
-                                                     <ul class="list-none font-bold">
-                                                                    <a class="px-4 py-4" href="panier.html">Panier</a>
-                                                     </ul>
-                                             </nav>
-                              </header>
-                              <main  class="flex direction" id="main">
-                                      <div id="produitlist" class="flex direction-reverse">
-                                       <select id="nomproduit" class="border-radius">
+                <header class="header rounded-lg w-full py-2 px-6">
+                        <a href="index.html">
+                                <p><img id="imgNorbert" class="imagelogo" src="images/logo.jpg" alt="logo de l'entreprise Orinoco"></p>
+                        </a>
+                        <nav class="lienpanier">
+                                <ul class="panier font-bold">
+                                               <a class="px-4 py-4" href="panier.html">Panier</a>
+                                </ul>
+                        </nav>
+         </header>
+                              <main  class="main" id="main">
+                                      <div id="produitlist" class="produitlist">
+                                       <select id="nomproduit" class="nomproduit">
                                                
                                        </select>
                                       </div>
                                 
-                                      <button id="panier" class="flex items-center border-radius">ajouter au panier</button>
-                                      <section id="petitPanier" class="flex direction position align-self col-2 color">
-                                              <div class="flex direction">
-                                                <table  class="container ml-1 ">
+                                      <button id="panier" class="panier">ajouter au panier</button>
+                                      <section id="petitPanier" class="petitpanier col-2">
+                                              <div class="container">
+                                                <table  class="table ml-1 ">
                                                         <h2 id="h2">votre commande</h2>
                                                         <thead>
-                                                          <!-- <tr class="flex justify-content"><th>Produit</th><th>couleur</th><th>Quantité</th> <th>Prix</th><th>total</th></tr>    -->
+                                                                <th>Produit</th>
+                                                                <th>Quantité</th>
+                                                                <th>Prix</th>
+                                                        
                                                         </thead>
                                                         <tbody id="listearticle">
-                                                               <tr class="flex justify-content"></tr> 
+                                                               
                                                         </tbody>
                                                        
                                                 <tfoot id="totalprix" class="flex end"></tfoot>
@@ -47,8 +50,8 @@
                                       </section>
                               </main>
                               <footer>
-                                <div class="flex pt-2 bg">
-                                        <p><a class="ml-1 fs-1" href="index.html" >Accueil</a> </p>
+                                <div class="footer">
+                                        <p><a class="accueil" href="index.html">Accueil</a> </p>
                                 </div>
                         </footer>
 
