@@ -1,9 +1,9 @@
 main ();
 
 async function main(){
-  let products = await getArticles();
-  for (product of products){
-                 displayArticle(product);
+  let articles = await getArticles();
+  for (article of articles){
+                 displayArticle(article);
   }
 }
             
@@ -13,8 +13,8 @@ function getArticles() {
                .then(function(httpBodyResponse) {
                return httpBodyResponse.json()
                })
-               .then(function(products){
-                              return products
+               .then(function(articles){
+                              return articles
                })
                .catch(function(error) {
                               alert(error)
@@ -22,17 +22,17 @@ function getArticles() {
               }
 
 // mise en page des articles //
- function displayArticle(product){   
+ function displayArticle(article){   
   document.getElementById("produitlist").innerHTML +=`
-  <a id="id" class="carte" href="article.html?id=${product._id}">
+  <a id="id" class="carte" href="article.html?id=${article._id}">
   <div class="card carte" style="width: 100%;">
-   <div class="border-radius h-10 ">
-     <img class="image" src="${product.imageUrl}" alt="Image du produit">
+   <div class="border-radius">
+     <img class="image" src="${article.imageUrl}" alt="Image du produit">
    </div
    <div class="card-body">
-    <h1 class="list-none"><strong>${product.name}</strong></h1>
-     <p class="card-text list-none">${product.description}</p>
-     <p class="list-none flex align-items"><strong>${product.price/100}€</strong></p>
+    <h1 class="nomarticle"><strong>${article.name}</strong></h1>
+     <p class="card-text description">${article.description}</p>
+     <p class="nomarticle"><strong>${article.price/100}€</strong></p>
    </div>
  </div>
  </div>

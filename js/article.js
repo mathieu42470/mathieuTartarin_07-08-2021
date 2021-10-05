@@ -4,7 +4,7 @@ function main(){
   }
 
   // parametrage pour prendre l'id de l'article //
-  function getArticleId(){
+  function getArticleId(articleId){
              return new URL(location.href).searchParams.get("id");
   }
 
@@ -12,7 +12,7 @@ function main(){
 // recuperation des articles de nounours //
 function getArticle(articleId) {
                 fetch(`http://localhost:3000/api/teddies/${articleId}`)
-                            .then(response =>{response.json()})
+                            .then(response =>(response.json()))                                                           
                             .then(article =>{
                               //selection de la couleur//
                               displayArticle(article);
@@ -27,14 +27,13 @@ function getArticle(articleId) {
                             })
                            }
 
-
 // mise en page de l'article //
 function displayArticle(article){
                document.getElementById("produitlist").innerHTML +=`
-                <div class="card list-none ms border-radius my-1" style="width: 100%;">
-                <h1 class="flex center list-none"><strong>${article.name}</strong></h1>
-                 <img class="border-radius h-11 flex align " src="${article.imageUrl}"/>
-                <div class="card-body flex justify-content">
+                <div class="card article" style="width: 100%;">
+                <h1 class="titrearticle"><strong>${article.name}</strong></h1>
+                 <img class="imagearticle" src="${article.imageUrl}"/>
+                <div class="card-body cardbody">
                   <p class="card-text list-none">${article.description}</p>
                   <p class="list-none"><strong>${article.price/100}€</strong></p>
                 </div>
@@ -87,10 +86,10 @@ function displayArticle(article){
           let panierProduit = [];
           for (b = 0; b < articlesEnregistres.lstArticles.length; b++){
            panierProduit = panierProduit + `
-          <tr class="flex justify-content">
-             <td class="flex">${articlesEnregistres.lstArticles[b].article.name}</td >
-             <td class="flex">${articlesEnregistres.lstArticles[b].quantite}</td>
-             <td id="prixarticle" class="flex" value="">${articlesEnregistres.lstArticles[b].article.price/100}</td > 
+          <tr>
+             <td>${articlesEnregistres.lstArticles[b].article.name}</td >
+             <td>${articlesEnregistres.lstArticles[b].quantite}</td>
+             <td id="prixarticle" value="">${articlesEnregistres.lstArticles[b].article.price/100}</td > 
           </tr>`;  
           }
              if(b == articlesEnregistres.lstArticles.length){
@@ -100,7 +99,7 @@ function displayArticle(article){
  let totalPanier = document.getElementById("totalprix");
              totalPanier.innerHTML = `
              <p>le prix total est de <strong>${articlesEnregistres.PriceTotal}€<strong></p>`;  
-  }
+    }
 
   //fonction de calcul du total du panier//
   function calculTotal(lstArticles){
@@ -111,7 +110,6 @@ function displayArticle(article){
     }
     return PriceTotal;
   }
- 
 
   let listeArticle = document.getElementById("listearticle");
   let articlesEnregistres = JSON.parse(localStorage.getItem("article"));
@@ -124,9 +122,9 @@ function displayArticle(article){
         for (b = 0; b < articlesEnregistres.lstArticles.length; b++){
          panierProduit = panierProduit + `
         <tr>
-           <td >${articlesEnregistres.lstArticles[b].article.name};</td >         
-           <td >${articlesEnregistres.lstArticles[b].quantite};</td>
-           <td id="prixarticle"  value="">${articlesEnregistres.lstArticles[b].article.price/100}€</td > 
+           <td >${articlesEnregistres.lstArticles[b].article.name}</td >         
+           <td >${articlesEnregistres.lstArticles[b].quantite}</td>
+           <td id="prixarticle" value="">${articlesEnregistres.lstArticles[b].article.price/100}€</td > 
            
         </tr>`;  
         }

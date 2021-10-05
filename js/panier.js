@@ -28,7 +28,7 @@
 // mise en place prix total //  
  let totalPanier = document.getElementById("totalprix");
              totalPanier.innerHTML = `
-             <p>le prix total est de <strong>${articlesEnregistre.PriceTotal}€<strong></p>`;
+             <p>Prix total: <strong>${articlesEnregistre.PriceTotal}€<strong></p>`;
 
 
 // mise en place du formulaire //
@@ -36,31 +36,31 @@
    formulaire.innerHTML= `
    <h2>vos coordonnées</h2>
        <form name="form1" method="POST" action="">
-           <div class="flex justify-content mt col-12 column"> 
-             <div class="flex direction">
+           <div class="ligne col-12 "> 
+             <div class="form">
                 <label class="label" for="firstName">Prénom</label>
                 <input id="prenom" class="input" type="text" name="prenom"/>
              </div>
-             <div class="flex direction">
+             <div class="form">
                 <label class="label" for="lastName">Nom</label>
                 <input id="nom" class="input" type="text" name="nom"/>
              </div> 
-             <div class="flex direction">
+             <div class="form">
                 <label class="label" for="mail">Adresse e-mail</label>
                 <input id="mail" class="input" type="email" name="mail"/>
              </div>
              </div> 
-             <div class="flex justify-content mt col-12 column">
-             <div class="flex direction">
+             <div class="ligne col-12">
+             <div class="form">
                 <label class="label" for="adresse">Adresse</label>
                 <input id="adresse" class="input" type="text" name="adresse"/>
              </div>
-             <div class="flex direction">
+             <div class="form">
                 <label class="label" for="ville">ville</label>
                 <input id="ville" class="input" type="text" name="ville"/>
              </div>             
              </div>
-             <input id="bouton" type="submit" class="mt"></input>
+             <input id="bouton" type="submit" class="bouton"></input>
         </form>   
    `;
    

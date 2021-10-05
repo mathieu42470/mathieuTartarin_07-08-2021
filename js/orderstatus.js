@@ -6,7 +6,7 @@ let coordonnees = JSON.parse(localStorage.getItem("coordonnes"));
 // remerciement et numéro de commande //
 let remerciement = document.getElementById("remerciement");
 remerciement.innerHTML = `
-<p class="fs-2 ">Félicitation, votre commande a bien été enregistrée</p>
+<p class="felicitation">Félicitation, votre commande a bien été enregistrée</p>
  <p> Votre numéro de commande est <strong> ${numeroCommande.orderId}</strong></p>
 ` 
  let totalProduit = document.getElementById("totalproduit");

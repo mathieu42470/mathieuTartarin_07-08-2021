@@ -59,159 +59,106 @@
 .nomproduit{
     border-radius: 20px;
 }
+.produitliste{
+    display: flex;
+    flex-direction: column-reverse;
+}
 .panier{
     display: flex;
     border-radius: 20px;
     align-items: center;
 }
 .petitpanier{
-    color:#6f42c1;
+    background-color: transparent;
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     align-self: flex-end;
 }
-.bg-1{
-    background-color: white;
+.panierpetit{
+    display: flex;
+    justify-content: space-between;
 }
-.h-20{
-    height: 70px;          
+.totalpanier{
+    display: flex;
+    justify-content: end;
 }
-.bg{
-               background-color: #f3e9f1;
+.formulaire{
+    background-color: #f3e9f1;
+    margin-top: 10px;
 }
-.flex{
-               display: flex;
+.ligne{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+}
+.bouton{
+    margin-top: 10px;
+}
+.order{
+    margin: 10%;
+}
+.felicitation{
+    font-size: 35px;
+}
+.nomarticle{
+    color: black;
+    display: flex;
+    align-self: center;
+}
+.description{
+    color: black;
+    text-align: justify;
+}
+.article{
+    color: black;
+    margin-left: 2%;
+    border-radius: 20px;
+    margin-bottom: 2%;
+}
+.titrearticle{
+    display: flex;
+    justify-content: center;
+    color: black;
+}
+.imagearticle{
+    border-radius: 20px;
+    display: flex;
+    align-self: center;
+    width: 75%;
+    height: 40rem;
+    object-fit: cover;
+}
+.cardbody{
+    display: flex;
+    justify-content: space-between;
 }
 td{
     text-align: center;
 }
-.mt{
-    margin-top: 10px;
-}
-.mt-6{
-    margin-top: 5%;
-}
-.ms{
-    margin-left: 2%;
-}
-.items-center{
-               align-items: center;
-}
 .list-none{
                color: black;
 }
-.row{
-    flex-direction: row;
-}
-.direction{
-    flex-direction: column;
-}
-.justify-content{
-    justify-content: space-between;
-}
+
 h1{
     font-size: 25px;
 }
 p{
     font-size: 15px;
 }
-.h-10{
-    height: 15rem;
-    width: 100%;
-    object-fit: cover;
-}
+
 .border-radius{
     border-radius: 20px;
-}
-.pt-1{
-    padding-top: 2%;
-}
-.ml-1{
-    margin-left: 10px;
-}
-.my-1{
-    margin-bottom: 2%;
-}
-.pt-2{
-    margin-top: 10px;
-}
-.fs-1{
-    font-size: 20px;
-}
-.h-1{
-    height: 20rem;
-    width: 100%;
-    object-fit: cover;
-}
-.objectif-fit{
-    object-fit: cover;
-}
-.center{
-    justify-content: center;
-}
-.bg-2{
-    background-color: grey;
-}
-h2{
-    font-size: 20px;
-}
-.h-2{
-    width: 100%;
-    height: 50px;
-    object-fit: cover;
-}
-.wrap{
-    flex-wrap: wrap;
-}
-.my-2{
-    margin: 10%;
-}
-.fs-2{
-    font-size: 35px;
-}
-.align-self{
-    align-self: flex-end;
-}
-.border{
-    border: black solid;
-}
-.pl-1{
-    padding-left: 30%;
-}
-.h-11{
-    width: 75%;
-    height: 40rem;
-    object-fit: cover;
-}
-.align{
-    align-self: center;
 }
 th{
     text-align: center;
 }
-.direction-reverse{
-    flex-direction: column-reverse;
-}
-.width{
-    width: 100%;
-}
-.end{
-    justify-content: end;
-}
-.position{
-    position: absolute;
-}
-.color{
-    color:#6f42c1;
-}
+
 @media (min-width: 100px) and (max-width: 600px){
-    .flex{
-         display: flex;
-     }
-     .direction{
-         flex-direction: column;
-     }
      .image{
          object-fit: cover;
      }
@@ -225,13 +172,8 @@ th{
      
 }
 @media (min-width: 600px) and (max-width: 1024px){
-     .flex{
+     .ligne{
          display: flex;
-     }
-     .direction{
-         flex-direction: column;
-     }
-     .column{
          flex-direction: column;
      }
      
