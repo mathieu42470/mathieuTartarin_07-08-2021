@@ -1,6 +1,7 @@
 main ()
 function main(){
     getArticle(getArticleId());
+    
   }
 
   // parametrage pour prendre l'id de l'article //
@@ -47,6 +48,7 @@ function displayArticle(article){
       })
 }
 
+//Fonction permettant d'ajouter un article dans le panier
  function changepage(article){
     // mise en place du local storage//
     let color = document.getElementById('nomproduit').value;
